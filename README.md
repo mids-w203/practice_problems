@@ -77,3 +77,11 @@ The hazard rate at time $t$ is the probability density conditional on the event 
 1. (3 points) Say that the time that a server breaks down is a random variable $B$, which is uniformly distributed on $[0,2]$.  Compute the hazard rate of $B$. 
 
 2. (3 points) Prove that if $X$ is a random variable with hazard rate $h_X$ and $Y$ is a random variable with hazard rate $h_Y$, then the hazard rate of $min(X,Y)$ is $h_X + h_Y$.  (Hint: write the hazard rate in terms of just the cdf - no pdf.  Then remember what the cdf of a minimum of random variables looks like from the previous problem)
+
+## Can Independence Carry Through?
+
+The following statements are either true or false.  Prove them or provide a counterexample:
+
+1. If X, Y, and Z are random variables, X and Y are independent, Y and Z are independent, then Z and Z must be independent.
+
+2. If X, Y, and Z are random variables, X and Y are not independent, Y and Z are not independent, then X and Z must be not independent.
