@@ -124,7 +124,7 @@ The hazard rate at time $t$ is the probability density conditional on the event 
 
 The following statements are either true or false.  Prove them or provide a counterexample:
 
-1. If X, Y, and Z are random variables, X and Y are independent, Y and Z are independent, then Z and Z must be independent.
+1. If X, Y, and Z are random variables, X and Y are independent, Y and Z are independent, then X and Z must be independent.
 
 2. If X, Y, and Z are random variables, X and Y are not independent, Y and Z are not independent, then X and Z must be not independent.
 
