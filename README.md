@@ -63,7 +63,7 @@ This repo contains pointers to practice problems that run alongside the weekly c
 
 | Concept                                    | Questions      | Page Number |
 |--------------------------------------------|----------------|-------------|
-| Discrete Distributions                     | 25-39          | 29          | 
+| Discrete Distributions                     | 35-39          | 29          | 
 | Discrete Joint Distributions               | 60-66          | 112         | 
 | Density Functions                          | 1-2            | 185         | 
 | Continuous Distribution Functions          | 6-14           | 186         | 
