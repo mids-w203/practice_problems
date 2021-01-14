@@ -71,6 +71,11 @@ This repo contains pointers to practice problems that run alongside the weekly c
 | Continuous Joint Distributions             | All            | 187         | 
 |                                            |                |             |
 
+# Unit 3 Concepts 
+# Unit 3 Practice Problems 
+
+# Unit 4 Concepts 
+# Unit 4 Practice Problems
 
 ## Concert Time
 
