@@ -20,8 +20,8 @@
 
 title: Practice Problems
 email: smajhi@berkeley.edu
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/practice_problems" # the subpath of your site, e.g. /blog
+url: "https://mids-w203.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  sushovan4
 
 # Build settings
