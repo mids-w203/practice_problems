@@ -1,6 +1,5 @@
 ---
-layout: home
-permalink: misc
+number: 4
 ---
 
 ## Concert Time

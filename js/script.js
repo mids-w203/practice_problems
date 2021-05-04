@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    $('.solution.button').click(function() {
-        $(this).parent().find('.ui.modal').modal('show');
-    });    
+    $('.ui.accordion').accordion();
+    $('.ui.dropdown').dropdown();
+    $('table').addClass('ui very basic collapsing celled table');  
 });

@@ -32,6 +32,7 @@ plugins:
 collections:
   categories:
     output: true
+    sort_by: number
   problems:
     output: false
     sort_by: number

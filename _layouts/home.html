@@ -23,11 +23,31 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div class="ui basic segment container">
-    <a href="https://github.com/mids-w203/practice_problems/">
+  <div class="ui container basic segment">
+    <div class="ui text menu">
+      <a class="header item" href="/"><i class="big home icon"></i></a>
+      <h3 class="item">
+        w203: Practice Problems
+      </h3>
+      
+      <div class="right menu">
+        <div class="ui dropdown item">
+          Categories
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            {% for category in site.categories %}
+            <a href="{{ category.url }}" class="item">{{ category.title }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        <a class="item" href="https://github.com/mids-w203/practice_problems/">
           <i class="ui black big github icon"></i>
-    </a>
-    <h1 class="ui dividing header">w203: Practice Problems</h1>  
+      </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui basic segment container">
     {{ content }}
   </div>
 </body>

@@ -2,38 +2,44 @@
 layout: home
 ---
 <h1 class="ui center aligned header">{{ page.title }}</h1>
-<div class="ui raised segment">
-    <h2 class="ui dividing header">Concepts</h2>
-    {{ page.concepts }}
-
+<div class="ui basic segment">
+  {{ content }}
 </div>
 
-<div class="ui raised segment">
+<div class="ui basic segment">
     <h2 class="ui dividing header">Practice Problems</h2>
-    {% for problem in site.problems %}
-    <div class="ui vertical clearing segment">
-        <b>Problem {{ problem.number }}</b>
-        <button class="ui right floated basic teal mini solution button">Solution</button>
-        <br><br>
-
-        {{ problem.statement }}
-    
-        <div class="ui modal">
-            <i class="close icon"></i>
-            <div class="header">
-                {{ problem.statement }}          
-            </div>
-            <div class="content">
-              <div class="description">
-                <p>{{ problem.content }}</p>
-              </div>
-            </div>
-            <div class="actions">
-              <div class="ui red mini deny button">
-                Close
-              </div>
-            </div>
+    <div class="ui accordion">
+      {% for problem in site.problems %}
+      {% assign path = problem.path | split: "/" %}
+      {% assign directory = page.title | downcase | split: " " | join: "-"  %}
+      {% if path[1] == directory %}
+      <div class="ui raised segment"> 
+      <div class="title">
+        <div class="">
+          <label class="ui label">{{ path[2] | split: "-" | join: " " }}</label>
+          {% if problem.content != '' %}
+          <button class="ui mini icon green circular right floated button">
+            Solution
+            <i class="dropdown icon"></i>
+          </button>
+          {% endif %}
+          <br><br>
         </div>
+        <b>Problem {{ problem.number }}: </b>
+        {{ problem.statement }}
+      </div>  
+      <div class="content" >
+        {% if problem.content != '' %}
+        <p class="transition hidden"
+        style="border: 1px solid rgb(93, 180, 93);padding: 5px;
+          border-radius: 4px;">
+          <b>Solution:</b>
+          {{ problem.content }}
+        </p>
+        {% endif %}
+      </div>
     </div>
+    {% endif %}
     {% endfor %}
+    </div>
 </div>

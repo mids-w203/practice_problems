@@ -1,5 +1,5 @@
 ---
-layout: home
+number: 2
 ---
 
 # Unit 2 Concepts 
