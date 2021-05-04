@@ -1,0 +1,39 @@
+---
+layout: home
+---
+<h1 class="ui center aligned header">{{ page.title }}</h1>
+<div class="ui raised segment">
+    <h2 class="ui dividing header">Concepts</h2>
+    {{ page.concepts }}
+
+</div>
+
+<div class="ui raised segment">
+    <h2 class="ui dividing header">Practice Problems</h2>
+    {% for problem in site.problems %}
+    <div class="ui vertical clearing segment">
+        <b>Problem {{ problem.number }}</b>
+        <button class="ui right floated basic teal mini solution button">Solution</button>
+        <br><br>
+
+        {{ problem.statement }}
+    
+        <div class="ui modal">
+            <i class="close icon"></i>
+            <div class="header">
+                {{ problem.statement }}          
+            </div>
+            <div class="content">
+              <div class="description">
+                <p>{{ problem.content }}</p>
+              </div>
+            </div>
+            <div class="actions">
+              <div class="ui red mini deny button">
+                Close
+              </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

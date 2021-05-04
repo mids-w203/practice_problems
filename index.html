@@ -1,0 +1,13 @@
+---
+layout: home
+---
+<div class="ui segment">
+    This repo contains pointers to practice problems that run alongside the
+    weekly concepts covered in MIDS w203. 
+</div>
+
+{% for category in site.categories %}
+<a class="ui basic teal button" href="{{ category.url }}">
+    {{ category.title }}
+</a>
+{% endfor %}

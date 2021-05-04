@@ -29,6 +29,21 @@ theme: minima
 plugins:
   - jekyll-feed
 
+collections:
+  categories:
+    output: true
+  problems:
+    output: false
+    sort_by: number
+    
+defaults:
+  -
+    scope:
+      path: ""
+      type: "categories"
+    values:
+      layout: category
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
