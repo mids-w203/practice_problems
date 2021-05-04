@@ -9,7 +9,7 @@
     crossorigin="anonymous">
   </script>
   <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-  <script src="{{ site.baseurl }}}/js/script.js"></script>
+  <script src="{{ site.baseurl }}/js/script.js"></script>
   <script>
     MathJax = {
       tex: {
@@ -36,7 +36,7 @@
           <i class="dropdown icon"></i>
           <div class="menu">
             {% for category in site.categories %}
-            <a href="{{ category.url }}" class="item">{{ category.title }}</a>
+            <a href="{{ category.path | prepend: site.baseurl }}" class="item">{{ category.title }}</a>
             {% endfor %}
           </div>
         </div>
