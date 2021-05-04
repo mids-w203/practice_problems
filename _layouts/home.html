@@ -36,7 +36,7 @@
           <i class="dropdown icon"></i>
           <div class="menu">
             {% for category in site.categories %}
-            <a href="{{ category.path | prepend: site.baseurl }}" class="item">{{ category.title }}</a>
+            <a href="{{ category.url | prepend: site.baseurl }}" class="item">{{ category.title }}</a>
             {% endfor %}
           </div>
         </div>
