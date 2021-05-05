@@ -3,6 +3,9 @@ html, body {
     padding: 0;
 }
 
+.ui.accordion .title {
+    cursor: inherit;
+}
 
 .ui.segment {
     font-size: 16px!important;
