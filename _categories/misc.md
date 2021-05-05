@@ -4,7 +4,12 @@ number: 4
 
 ## Concert Time
 
-You are excited about a concert featuring your favorite a cappella group: the Pitch Estimators. Tickets go on sale at noon, but before you can buy a ticket, you have to wait for your turn in an online waiting room.  Because tickets are in high demand, you enlist two of your friends to help you.  All three of you enter the waiting room at noon, and as soon as any one of you gets a ticket, you are done and can all sign off.
+You are excited about a concert featuring your favorite a cappella group: the
+Pitch Estimators. Tickets go on sale at noon, but before you can buy a ticket,
+you have to wait for your turn in an online waiting room.  Because tickets are
+in high demand, you enlist two of your friends to help you.  All three of you
+enter the waiting room at noon, and as soon as any one of you gets a ticket, you
+are done and can all sign off.
 
 Suppose your waiting time in minutes is a continuous random variable $T$.
 Your first friend's waiting time in minutes is a continuous random variable $U$.
