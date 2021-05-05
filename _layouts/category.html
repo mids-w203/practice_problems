@@ -16,25 +16,23 @@ layout: home
       <div class="ui raised segment"> 
       <div class="title">
         <div class="">
-          <label class="ui label">{{ path[2] | split: "-" | join: " " }}</label>
+          <b>Problem {{ problem.number }}:</b> <label class="ui label">{{ path[2] | split: "-" | join: " " }}</label>
           {% if problem.content != '' %}
           <button class="ui mini icon green circular right floated button">
             Solution
             <i class="dropdown icon"></i>
           </button>
           {% endif %}
-          <br><br>
         </div>
-        <b>Problem {{ problem.number }}: </b>
-        {{ problem.statement }}
+        {{ problem.statement | markdownify }}
       </div>  
-      <div class="content" >
-        {% if problem.content != '' %}
-        <p class="transition hidden"
-        style="border: 1px solid rgb(93, 180, 93);padding: 5px;
+      <div class="content" 
+      style="border: 1px solid rgb(93, 180, 93);padding: 5px;
           border-radius: 4px;">
+        {% if problem.content != '' %}
+        
           <b>Solution:</b>
-          {{ problem.content }}
+          {{ problem.content | xml_escape | markdownify }}
         </p>
         {% endif %}
       </div>

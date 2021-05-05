@@ -8,13 +8,14 @@ github_username:  sushovan4
 theme: minima
 plugins:
   - jekyll-feed
+kramdown:
+  hard_wrap: true  
 
 collections:
   categories:
     output: true
     sort_by: number
   problems:
-    output: false
     sort_by: number
     
 defaults:
@@ -24,3 +25,9 @@ defaults:
       type: "categories"
     values:
       layout: category
+  -
+    scope:
+      path: ""
+      type: "problems"
+    values:
+      excerpt_separator: <!--sol-->
