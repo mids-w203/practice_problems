@@ -27,15 +27,3 @@ number: 2
 | Continuous R.V.s: Independence             | 5.25: Independence         | 182         |
 | Continuous R.V.s: Conditional Distributions| 5.28: Conditional Distr. I | 184         |
 | Continuous R.V.s: Conditional Distributions| 5.29: Conditional Distr. II| 185         |
-
-
-# Unit 2 Practice Problems 
-
-| Concept                                    | Questions      | Page Number |
-|--------------------------------------------|----------------|-------------|
-| Discrete Distributions                     | 35-39          | 29          | 
-| Discrete Joint Distributions               | 60-66          | 112         | 
-| Density Functions                          | 1-2            | 185         | 
-| Continuous Distribution Functions          | 6-14           | 186         | 
-| Functions of Random Variables              | 18-21          | 187         | 
-| Continuous Joint Distributions             | All            | 187         | 
