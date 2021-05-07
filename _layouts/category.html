@@ -13,11 +13,16 @@ layout: home
 
 <h1 class="ui center aligned header">{{ page.title }}</h1>
 {% for topic in page.topics %}
-<a class="ui basic red button" href="#{{topic | split: ' ' | join: '-' }}">
+<a style="margin:3px" class="ui basic red icon small button" href="#{{topic | split: ' ' | join: '-' }}">
   #{{ topic }}
 </a>
 {% endfor %}
 
+{% if grouped_problems.last.name == '-1' %}
+<a class="ui basic red button" href="#Miscellaneous">
+  #Miscellaneous
+</a>
+{% endif %}
 <div class="ui basic segment">
   {{ content }}
 </div>
@@ -26,6 +31,7 @@ layout: home
   <h2 class="ui dividing header">Practice Problems</h2>
   <div class="ui accordion">  
     {% for group in grouped_problems %}
+    {% assign problems = group.items | sort: 'title' %}
     {% assign idx = group.name | plus: 0 %}
     {% if idx < 0 %}
     {% assign name = 'Miscellaneous' %}
@@ -34,12 +40,12 @@ layout: home
     {% endif %}
     
     <div class="ui basic segment" id="{{ name | split: ' ' | join: '-' }}">
-      <a href="{{ name | split: ' ' | join: '-' }}"> 
+      <a href="#{{ name | split: ' ' | join: '-' }}"> 
         <div class="ui red header">
           # {{ name }}
         </div>  
       </a>
-      {% for problem in group.items %}
+      {% for problem in problems %}
       {% include problem.md problem=problem %}
       {% endfor %}
     </div>

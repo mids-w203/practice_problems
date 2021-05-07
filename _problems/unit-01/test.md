@@ -1,5 +1,0 @@
----
-statement: |
-    bla bla
----
-answer
