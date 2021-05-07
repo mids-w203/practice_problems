@@ -27,4 +27,4 @@ defaults:
       path: ""
       type: "problems"
     values:
-      topic: -1
+      topic: 1000

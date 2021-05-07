@@ -6,23 +6,29 @@ layout: home
 {% for problem in site.problems %}
 {% assign path = problem.path | split: "/" %}
 {% if path[1] == directory %}
-{% assign problems = problems | push: problem %}      
+{% assign problems = problems | push: problem %}
 {% endif %}
 {% endfor %}
-{% assign grouped_problems = problems | group_by: 'topic' %}
+{% assign grouped_problems = problems | sort: 'topic' | group_by: 'topic' %}
+
 
 <h1 class="ui center aligned header">{{ page.title }}</h1>
-{% for topic in page.topics %}
-<a style="margin:3px" class="ui basic red icon small button" href="#{{topic | split: ' ' | join: '-' }}">
-  #{{ topic }}
+{% for group in grouped_problems %}
+{% assign idx = group.name | plus: 0 %}
+{% if page.topics[idx] and page.topics[idx] != '' %}
+<a style="margin:3px" class="ui basic red icon small button" 
+href="#{{ page.topics[idx] | split: ' ' | join: '-' }}">
+  #{{ page.topics[idx] }}
 </a>
-{% endfor %}
-
-{% if grouped_problems.last.name == '-1' %}
-<a class="ui basic red button" href="#Miscellaneous">
+{% else %}
+<a style="margin:3px" class="ui basic red icon small button" 
+href="#Miscellaneous">
   #Miscellaneous
 </a>
 {% endif %}
+
+{% endfor %}
+
 <div class="ui basic segment">
   {{ content }}
 </div>
@@ -33,10 +39,10 @@ layout: home
     {% for group in grouped_problems %}
     {% assign problems = group.items | sort: 'title' %}
     {% assign idx = group.name | plus: 0 %}
-    {% if idx < 0 %}
-    {% assign name = 'Miscellaneous' %}
-    {% else %}
+    {% if page.topics[idx] and page.topics[idx] != '' %}
     {% assign name = page.topics[idx]  %}
+    {% else %}
+    {% assign name = 'Miscellaneous' %}
     {% endif %}
     
     <div class="ui basic segment" id="{{ name | split: ' ' | join: '-' }}">
