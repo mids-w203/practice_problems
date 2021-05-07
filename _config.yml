@@ -27,4 +27,4 @@ defaults:
       path: ""
       type: "problems"
     values:
-      excerpt_separator: <!--sol-->
+      topic: -1

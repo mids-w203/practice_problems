@@ -1,12 +1,23 @@
 ---
 layout: home
 ---
+{% assign directory = page.title | downcase | split: " " | join: "-"  %}
+{% assign problems = "" | split: ',' %}
+{% for problem in site.problems %}
+{% assign path = problem.path | split: "/" %}
+{% if path[1] == directory %}
+{% assign problems = problems | push: problem %}      
+{% endif %}
+{% endfor %}
+{% assign grouped_problems = problems | group_by: 'topic' %}
+
 <h1 class="ui center aligned header">{{ page.title }}</h1>
 {% for topic in page.topics %}
-<a class="ui basic red button" href="#{{topic}}">
+<a class="ui basic red button" href="#{{topic | split: ' ' | join: '-' }}">
   #{{ topic }}
 </a>
 {% endfor %}
+
 <div class="ui basic segment">
   {{ content }}
 </div>
@@ -14,22 +25,22 @@ layout: home
 <div class="ui basic segment">
   <h2 class="ui dividing header">Practice Problems</h2>
   <div class="ui accordion">  
-    {% for topic in page.topics %}
-    <div class="ui basic segment" id="{{ topic }}">
-      <a href="#{{ topic }}"> 
+    {% for group in grouped_problems %}
+    {% assign idx = group.name | plus: 0 %}
+    {% if idx < 0 %}
+    {% assign name = 'Miscellaneous' %}
+    {% else %}
+    {% assign name = page.topics[idx]  %}
+    {% endif %}
+    
+    <div class="ui basic segment" id="{{ name | split: ' ' | join: '-' }}">
+      <a href="{{ name | split: ' ' | join: '-' }}"> 
         <div class="ui red header">
-          # {{ topic }}
+          # {{ name }}
         </div>  
       </a>
-      {% assign directory = page.title | downcase | split: " " | join: "-"  %}
-      {% for problem in site.problems %}
-      {% assign path = problem.path | split: "/" %}
-      {% if path[1] == directory %}
-      
-      {% if page.topics[problem.topic] == topic %}
+      {% for problem in group.items %}
       {% include problem.md problem=problem %}
-      {% endif %}
-      {% endif %}
       {% endfor %}
     </div>
     {% endfor %}
