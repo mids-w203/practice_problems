@@ -1,5 +1,6 @@
 ---
 number: 1
+topics: ['Probability Space', 'Statistical Independence']
 ---
 <h2 class="ui dividing header">Concepts</h2>
 
