@@ -1,4 +1,4 @@
-<div class="ui raised segment"> 
+<div class="ui raised segment" id="prob-{{problem.title}}"> 
     <div class="title">
         <div class="ui right floated left labeled button" tabindex="0">
             {% if problem.answer and problem.answer != '' %}
@@ -13,7 +13,7 @@
             </button>
             {% endif %}
         </div>    
-        <b>Problem: 
+        <b>Problem {{problem.title}}: 
             {% if problem.caption and problem.caption != '' %}
             ({{ problem.caption }})
             {% endif %}
@@ -21,9 +21,9 @@
  
         {% for ref in site.references %}
         {% if ref.title == problem.ref %}
-        <a class="ui label" href="#ref-{{ref.title}}">
+        <a class="ui small icon basic button" href="#ref-{{ref.title}}">
         {{ problem.tag }} 
-        [{{ref.title | upcase }}]
+        | {{ref.title | upcase }}<i class="ui blue down arrow icon"></i>
         </a>
         {% endif %}
         {% endfor %}
@@ -36,7 +36,7 @@
           border-radius: 4px;">
         {% if problem.content != '' %}
           <b>Solution:</b>
-          {{ problem.content | xml_escape | markdownify }}
+          {{ problem.content | markdownify }}
         </p>
         {% endif %}
     </div>
