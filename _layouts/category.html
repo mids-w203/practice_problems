@@ -60,6 +60,7 @@ href="#Miscellaneous">
 </div>
 
 <div class="ui basic segment">
+  <h3 class="ui dividing header">References</h3>
   {% assign used_refs = cat_problems | map: 'ref' | uniq %}
   {% for ref in site.references %}
   {% for ref1 in used_refs %}
