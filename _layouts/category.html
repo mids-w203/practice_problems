@@ -2,14 +2,14 @@
 layout: home
 ---
 {% assign directory = page.title | downcase | split: " " | join: "-"  %}
-{% assign problems = "" | split: ',' %}
+{% assign cat_problems = "" | split: ',' %}
 {% for problem in site.problems %}
 {% assign path = problem.path | split: "/" %}
 {% if path[1] == directory %}
-{% assign problems = problems | push: problem %}
+{% assign cat_problems = cat_problems | push: problem %}
 {% endif %}
 {% endfor %}
-{% assign grouped_problems = problems | sort: 'topic' | group_by: 'topic' %}
+{% assign grouped_problems = cat_problems | sort: 'topic' | group_by: 'topic' %}
 
 
 <h1 class="ui center aligned header">{{ page.title }}</h1>
@@ -57,4 +57,19 @@ href="#Miscellaneous">
     </div>
     {% endfor %}
   </div>
+</div>
+
+<div class="ui basic segment">
+  {% assign used_refs = cat_problems | map: 'ref' | uniq %}
+  {% for ref in site.references %}
+  {% for ref1 in used_refs %}
+  {% if ref.title == ref1 %}
+  <div class="ui vertical segment" id="ref-{{ref.title}}">
+    [<b>{{ ref.title | upcase }}</b>] 
+    {{ref | markdownify | remove: "<p>" | remove: "</p>" }}
+    &nbsp;(<a href="{{ ref.link }}">link</a>)
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
 </div>

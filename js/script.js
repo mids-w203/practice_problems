@@ -4,6 +4,7 @@ $( document ).ready(function() {
             trigger: '.title button'
         }
     });
+
     $('.ui.dropdown').dropdown();
     $('table').addClass('ui very basic collapsing celled centered table');  
 });

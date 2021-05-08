@@ -18,13 +18,20 @@
             ({{ problem.caption }})
             {% endif %}
         </b>
-        <label class="ui tag label">
-        {{ problem.tag }}
-        </label>
+ 
+        {% for ref in site.references %}
+        {% if ref.title == problem.ref %}
+        <a class="ui label" href="#ref-{{ref.title}}">
+        {{ problem.tag }} 
+        [{{ref.title | upcase }}]
+        </a>
+        {% endif %}
+        {% endfor %}
+        
         <br><br>
         {{ problem.statement | markdownify }}
     </div>  
-    <div class="content" 
+    <div class="content"
       style="border: 1px solid rgb(93, 180, 93);padding: 5px;
           border-radius: 4px;">
         {% if problem.content != '' %}

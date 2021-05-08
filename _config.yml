@@ -14,7 +14,8 @@ collections:
     output: true
     sort_by: number
   problems:
-    
+  references:
+  
 defaults:
   -
     scope:
