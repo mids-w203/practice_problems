@@ -18,7 +18,6 @@
             ({{ problem.caption }})
             {% endif %}
         </b>
- 
         {% for ref in site.references %}
         {% if ref.title == problem.ref %}
         <a class="ui small icon basic button" href="#ref-{{ref.title}}">

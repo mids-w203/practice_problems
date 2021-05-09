@@ -5,6 +5,10 @@ services:
     container_name: app
     build:
       context: .
+    volumes:
+      - '.:/usr/src/app'  
     ports:
       - 4000:4000
-    command: bundle exec jekyll s -l  --host 0.0.0.0
+      - 35729:35729
+    command: bundle exec jekyll serve --incremental --force_polling -H 0.0.0.0 -l  -P 4000 --livereload
+    

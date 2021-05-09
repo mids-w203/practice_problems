@@ -1,6 +1,6 @@
 ---
 number: 2
-topics: [Continuous Distribution Functions,Density Functions,Discrete Distributions,Discrete Joint Distribution]
+topics: [Discrete Distributions,Discrete Joint Distribution,Density Functions,Continuous Distribution Functions,Function of Random Variables,Continuous Joint Distributions]
 ---
 
 # Unit 2 Concepts 
