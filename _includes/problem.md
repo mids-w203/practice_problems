@@ -31,7 +31,7 @@
         <br><br>
         {{ problem.statement | markdownify }}
     </div>  
-    <div class="content"
+    <div class="{% if jekyll.environment=='development' %}active{% endif %} content"
       style="border: 1px solid rgb(93, 180, 93);padding: 5px;
           border-radius: 4px;">
         {% if problem.content != '' %}
