@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+    ports:
+      - 4000:4000
+    command: bundle exec jekyll s -l  --host 0.0.0.0
