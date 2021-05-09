@@ -1,5 +1,5 @@
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\E}{\text{E}}
+https://mids-w203.github.io/practice_problems/
+
 
 # practice_problems
 
