@@ -10,5 +10,5 @@ services:
     ports:
       - 4000:4000
       - 35729:35729
-    command: bundle exec jekyll serve --incremental --force_polling -H 0.0.0.0 -l  -P 4000 --livereload
+    command: bundle exec jekyll serve -H 0.0.0.0 -l  -P 4000 --livereload
     
