@@ -34,7 +34,7 @@ href="#Miscellaneous">
 </div>
 
 <div class="ui basic segment">
-  <h2 class="ui dividing header">Practice Problems</h2>
+  
   <div class="ui accordion">  
     {% for group in grouped_problems %}
     {% assign problems = group.items | sort: 'title' %}
@@ -45,14 +45,14 @@ href="#Miscellaneous">
     {% assign name = 'Miscellaneous' %}
     {% endif %}
     
-    <div class="ui basic segment" id="{{ name | split: ' ' | join: '-' }}">
+    <div id="{{ name | split: ' ' | join: '-' }}" style="margin-top: 15px;">
       <a href="#{{ name | split: ' ' | join: '-' }}"> 
         <div class="ui red header">
           # {{ name }}
         </div>  
       </a>
       {% for problem in problems %}
-      {% include problem.md problem=problem %}
+      {% include problem.html problem=problem %}
       {% endfor %}
     </div>
     {% endfor %}

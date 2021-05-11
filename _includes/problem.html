@@ -1,18 +1,11 @@
 <div class="ui raised segment" id="prob-{{problem.title}}"> 
     <div class="title">
-        <div class="ui right floated left labeled button" tabindex="0">
-            {% if problem.answer and problem.answer != '' %}
-            <a class="ui basic green right pointing label">
-                {{problem.answer }} 
-            </a>
-            {% endif %}
-            {% if problem.content != '' %}
-            <button class="ui icon green small button">
-                Solution
-                <i class="dropdown icon"></i>
-            </button>
-            {% endif %}
-        </div>    
+        {% if problem.content != '' %}
+        <button class="ui icon green small right floated button">
+            Solution
+            <i class="dropdown icon"></i>
+        </button>
+        {% endif %}
         <b>Problem {{problem.title}}: 
             {% if problem.caption and problem.caption != '' %}
             ({{ problem.caption }})
@@ -31,12 +24,16 @@
         {{ problem.statement | markdownify }}
     </div>  
     <div class="{% if jekyll.environment=='development' %}active{% endif %} content"
-      style="border: 1px solid rgb(93, 180, 93);padding: 5px;
-          border-radius: 4px;">
+      style="padding-bottom: 30px;">
         {% if problem.content != '' %}
-          <b>Solution:</b>
+        <h3 class="ui dividing green header">Solution:</h3>
           {{ problem.content | markdownify }}
-        </p>
+        {% endif %}
+        
+        {% if problem.answer and problem.answer != '' %}
+        <div class="ui large  bottom attached label">
+            Answer: {{problem.answer }} 
+        </div>
         {% endif %}
     </div>
 </div>

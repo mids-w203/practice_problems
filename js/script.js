@@ -6,5 +6,5 @@ $( document ).ready(function() {
     });
 
     $('.ui.dropdown').dropdown();
-    $('table').addClass('ui very basic collapsing celled centered table');  
+    $('table').addClass('ui very basic celled centered table');  
 });
