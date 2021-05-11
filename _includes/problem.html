@@ -24,14 +24,14 @@
         {{ problem.statement | markdownify }}
     </div>  
     <div class="{% if jekyll.environment=='development' %}active{% endif %} content"
-      style="padding-bottom: 30px;">
+      style="padding-bottom: 30px;overflow-y: auto;">
         {% if problem.content != '' %}
         <h3 class="ui dividing green header">Solution:</h3>
           {{ problem.content | markdownify }}
         {% endif %}
         
         {% if problem.answer and problem.answer != '' %}
-        <div class="ui large  bottom attached label">
+        <div class="ui large  bottom right attached label">
             Answer: {{problem.answer }} 
         </div>
         {% endif %}
