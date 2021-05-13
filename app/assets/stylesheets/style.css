@@ -1,0 +1,12 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.ui.accordion .title {
+    cursor: inherit;
+}
+
+.ui.segment {
+    font-size: 17px!important;
+}
