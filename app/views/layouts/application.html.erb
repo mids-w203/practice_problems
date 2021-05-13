@@ -41,7 +41,9 @@
           Categories
           <i class="dropdown icon"></i>
           <div class="menu">
-            
+            <% Category.all.each do |c| %>
+              <div class="item"><%= c.title %></div>
+            <% end %>
           </div>
         </div>
         <a class="item" href="https://github.com/mids-w203/practice_problems/">

@@ -1,0 +1,7 @@
+<h1>Create a category</h1>
+
+<%= form_for @category do |f| %>
+Title: <%= f.text_field :title %>
+Index: <%= f.text_field :index %>
+<%= f.submit %>
+<% end %>
