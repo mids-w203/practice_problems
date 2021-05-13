@@ -1,0 +1,24 @@
+version: "3.3"
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    command: rails s -b 0.0.0.0
+    volumes:
+      - '.:/usr/src/app'
+  postgres:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: w203
+      POSTGRES_PASSWORD: w203
+      POSTGRES_DB: w203_development
+    volumes:
+      - w203-db:/var/lib/postgresql/data
+
+volumes:
+  w203-db:
