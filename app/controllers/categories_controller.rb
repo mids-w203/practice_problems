@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  http_basic_authenticate_with name: 'mids', password: 'w203', except: [:show]
+    
   def show
     @category = Category.find(params[:id])
   end

@@ -1,9 +1,40 @@
 <h1>Create a problem</h1>
+<%= form_for @problem, url: topic_problems_url(@problem.topic), html: {class: "ui form"} do |f| %>
+    <div class="ui field">
+        <%= f.label "Topic" %>
+        <div class="ui search selection dropdown">
+            <%= f.text_field :topic_id, type: 'hidden', value: @problem.topic.id %>
+            <i class="dropdown icon"></i>
+            <div class="default text">Topic</div>
+            <div class="menu">
+            <% Topic.all.each do |t| %>
+                <div class="item" data-value="<%= t.id %>">
+                    <%= "#{t.category.title}/#{t.title}" %>
+                </div>
+            <% end %>
+            </div>
+        </div>
+    </div>
 
-<%= form_for @problem do |f| %>
-Title: <%= f.text_field :title %>
-Statement: <%= f.text_area :statement %>
-Solution: <%= f.text_area :solution %>
-Index: <%= f.text_field :index %>
-<%= f.submit %>
+    <div class="ui field">
+        <%= f.label :index %> 
+        <%= f.text_field :index %>
+    </div>
+
+    <div class="ui field">
+        <%= f.label :title %> 
+        <%= f.text_field :title %>
+    </div>
+
+    <div class="ui required field">
+        <%= f.label :statement %> 
+        <%= f.text_area :statement, rows: 3, required: true %>
+    </div>
+
+
+    <div class="ui field">
+        <%= f.label :solution %> 
+        <%= f.text_area :solution, rows: 8 %>
+    </div>
+    <%= f.submit class: "ui green button" %>
 <% end %>

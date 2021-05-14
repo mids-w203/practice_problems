@@ -1,7 +1,59 @@
-<%= link_to edit_category_url(@category), class: "ui right floated basic blue icon button" do %>
-<i class="edit icon"></i> Category
+<div>
+  <%= link_to category_url(@category), class: "ui right floated basic red icon button", method: :delete do %>
+    <i class="trash icon"></i> Category
+  <% end %>
+  <%= link_to edit_category_url(@category), class: "ui right floated basic blue icon button" do %>
+    <i class="edit icon"></i> Category
+  <% end %>
+  <%= link_to new_category_topic_url(@category), class: "ui right floated green basic icon small button" do %>
+    <i class="plus icon"></i> Topic
+  <% end %>
+</div>
+
+<h1 class="ui centered header"><%= @category.title %></h1>
+<div class="ui padded basic segment">
+</div>
+
+<% @category.topics.each do |t| %>
+<div class="ui basic clearing segment">
+
+  <div>
+    <%= link_to topic_url(t), class: "ui right floated red basic icon small button", method: :delete do %>
+    <i class="trash icon"></i> Topic
+    <% end %>
+    <%= link_to edit_topic_url(t), class: "ui right floated blue basic icon small button" do %>
+    <i class="edit icon"></i> Topic
+    <% end %>
+    <%= link_to new_topic_problem_url(t), class: "ui right floated green basic icon small button" do %>
+    <i class="plus icon"></i> Problem
+    <% end %>
+  </div>
+
+  <h3 class="ui dividing red header">
+    #<%= t.title %>
+  </h3>  
+
+  <div class="ui divided items">
+    <% t.problems.each do |p| %>
+    <div class="item">
+      <div class="content">
+        <%= link_to p do %><h4 class="header">Problem:</h4><% end %>
+        <div class="description">
+          <p><%= p.statement %></p> 
+        </div>
+        <div class="extra">
+          <i class="green check icon"></i>
+          121 Votes
+          <%= link_to problem_url(p), class: "ui right floated red basic icon small button", method: :delete do %>
+            <i class="trash icon"></i>
+          <% end %>
+          <%= link_to edit_problem_url(p), class: "ui right floated blue basic icon small button" do %>
+            <i class="edit icon"></i>
+          <% end %>
+        </div>      
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
 <% end %>
-
-<h1><%= @category.title %></h1>
-<%= link_to "add problem",  new_problem_url %>
-

@@ -1,9 +1,9 @@
 class TopicsController < ApplicationController
       def create
-        @category = Category.find(params[:category_id])
+        @category = Category.find(params[:topic][:category_id])
         @topic = @category.topics.new(topic_params)
         if @topic.save
-          redirect_to categories_url
+          redirect_to @category
         else
           render 'new'
         end
@@ -14,13 +14,15 @@ class TopicsController < ApplicationController
       end
       
       def new
-        @topic = Topic.new
+        @categories = Category.all
+        @category = Category.find(params[:category_id])
+        @topic = @category.topics.new
       end
     
       def update
         @topic = Topic.find(params[:id])
         if @topic.update(topic_params)
-          redirect_to categories_url
+          redirect_to @topic.category
         else
           render 'edit'
         end
@@ -29,12 +31,12 @@ class TopicsController < ApplicationController
       def destroy
         @topic = Topic.find(params[:id])
         @topic.destroy
-        redirect_to categories_url
+        redirect_to @topic.category
       end
     
       private
     
       def topic_params
-        params.require(:topic).permit(:title, :index)
+        params.require(:topic).permit(:title, :index, :category_id)
       end
 end

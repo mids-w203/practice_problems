@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$( document ).on('turbolinks:load',function() {
     $('.ui.accordion').accordion({
         selector: {
             trigger: '.title button'

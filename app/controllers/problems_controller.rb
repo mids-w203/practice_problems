@@ -6,7 +6,7 @@ class ProblemsController < ApplicationController
       def create
         @problem = Problem.new(problem_params)
         if @problem.save
-          redirect_to @problem.category
+          redirect_to @problem.topic.category
         else
           render 'new'
         end
@@ -17,13 +17,14 @@ class ProblemsController < ApplicationController
       end
       
       def new
-        @problem = Problem.new
+        @topic = Topic.find(params[:topic_id])
+        @problem = @topic.problems.new
       end
     
       def update
         @problem = Problem.find(params[:id])
         if @problem.update(problem_params)
-          redirect_to @problem.category
+          redirect_to @problem.topic.category
         else
           render 'edit'
         end
@@ -32,12 +33,12 @@ class ProblemsController < ApplicationController
       def destroy
         @problem = Problem.find(params[:id])
         @problem.destroy
-        redirect_to @problem.category
+        redirect_to @problem.topic.category
       end
     
       private
     
       def problem_params
-        params.require(:problem).permit(:title, :statement, :solution, :index)
+        params.require(:problem).permit(:title, :statement, :solution, :index, :topic_id)
       end
 end
