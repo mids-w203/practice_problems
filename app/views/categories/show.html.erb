@@ -10,12 +10,9 @@
   <% end %>
 </div>
 
-<h1 class="ui centered header"><%= @category.title %></h1>
-<div class="ui padded basic segment">
-</div>
-
+<h1 class="ui  header"><%= @category.title %></h1>
 <% @category.topics.each do |t| %>
-<div class="ui basic clearing segment">
+<div class="ui raised clearing segment">
 
   <div>
     <%= link_to topic_url(t), class: "ui right floated red basic icon small button", method: :delete do %>
@@ -37,17 +34,21 @@
     <% t.problems.each do |p| %>
     <div class="item">
       <div class="content">
-        <%= link_to p do %><h4 class="header">Problem:</h4><% end %>
         <div class="description">
-          <p><%= p.statement %></p> 
+          <p style="font-size: 17px"><b>Problem:</b> <%= p.statement %></p> 
         </div>
         <div class="extra">
-          <i class="green check icon"></i>
-          121 Votes
-          <%= link_to problem_url(p), class: "ui right floated red basic icon small button", method: :delete do %>
+          <i class="blue chat icon"></i>
+          121
+          |
+          <i class="red heart icon"></i>
+          121
+          | 
+          <%= link_to p, class: "ui mini basic green icon button" do %><i class="share icon"></i><% end %>
+          <%= link_to problem_url(p), class: "ui right floated red basic icon mini button", method: :delete do %>
             <i class="trash icon"></i>
           <% end %>
-          <%= link_to edit_problem_url(p), class: "ui right floated blue basic icon small button" do %>
+          <%= link_to edit_problem_url(p), class: "ui right floated blue basic icon mini button" do %>
             <i class="edit icon"></i>
           <% end %>
         </div>      
