@@ -1,7 +1,15 @@
 <h1>Edit category</h1>
 
-<%= form_for @category do |f| %>
-Title: <%= f.text_field :title %>
-Index: <%= f.text_field :index %>
-<%= f.submit %>
+<%= form_for @category, html: {class: "ui form"} do |f| %>
+    <div class="ui required field">
+        <%= f.label :title %> 
+        <%= f.text_field :title, required: true %>
+    </div>
+
+    <div class="ui field">
+        <%= f.label :index %> 
+        <%= f.text_field :index %>
+    </div>
+
+    <%= f.submit class: "ui blue button" %>
 <% end %>

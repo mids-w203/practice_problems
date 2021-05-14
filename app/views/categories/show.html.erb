@@ -1,3 +1,7 @@
+<%= link_to edit_category_url(@category), class: "ui right floated basic blue icon button" do %>
+<i class="edit icon"></i> Category
+<% end %>
+
 <h1><%= @category.title %></h1>
 <%= link_to "add problem",  new_problem_url %>
 
