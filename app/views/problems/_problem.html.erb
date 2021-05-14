@@ -1,0 +1,26 @@
+<div class="item">
+    <div class="content">
+        <%= link_to p do %>
+        <h3 class="ui blue header">Problem <%= p.index %>:</h3>
+        <% end %>
+        <div class="description">
+          <p style="font-size: 17px"><%= p.statement %></p> 
+        </div>
+        <div class="extra">
+          <%= link_to problem_like_url(p) do %>
+          <i class="red heart icon"></i>
+          <% end %>
+          <%= p.likes || 0 %>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <i class="blue chat icon"></i>
+          0
+        
+          <%= link_to problem_url(p), class: "ui right floated red basic icon mini button", method: :delete, data-confirm: "Are you sure?" do %>
+            <i class="trash icon"></i>
+          <% end %>
+          <%= link_to edit_problem_url(p), class: "ui right floated blue basic icon mini button" do %>
+            <i class="edit icon"></i>
+          <% end %>
+        </div>      
+    </div>
+</div>

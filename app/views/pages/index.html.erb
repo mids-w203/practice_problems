@@ -1,19 +1,10 @@
-
-<div class="ui segment">
-    This repo contains pointers to practice problems that run alongside the
-    weekly concepts covered in MIDS w203. 
-</div>
-
-<div class="ui clearing segment">
+<div class="ui clearing basic segment">
 <%= link_to new_category_url, class: "ui right floated basic green icon button" do %>
     <i class="plus icon"></i> Category
 <% end %>
-<h2 class="ui header">
-Categories
-</h2>
 
 <% @categories.each do |c| %>
-<%= link_to c.title, c, class: "ui green button" %>
+<%= link_to c.title, c, class: "ui basic green button" %>
 <% end %>
 </div>
 

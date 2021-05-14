@@ -10,3 +10,7 @@ html, body {
 .ui.segment {
     font-size: 16px!important;
 }
+
+.CodeMirror, .CodeMirror-scroll {
+	min-height: 150px;
+}

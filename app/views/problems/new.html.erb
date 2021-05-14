@@ -17,18 +17,18 @@
     </div>
 
     <div class="ui field">
-        <%= f.label :index %> 
-        <%= f.text_field :index %>
-    </div>
-
-    <div class="ui field">
         <%= f.label :title %> 
         <%= f.text_field :title %>
     </div>
 
     <div class="ui required field">
+        <%= f.label :index %> 
+        <%= f.text_field :index, required: true %>
+    </div>
+
+    <div class="ui required field">
         <%= f.label :statement %> 
-        <%= f.text_area :statement, rows: 3, required: true %>
+        <%= f.text_area :statement, rows: 3 %>
     </div>
 
 
@@ -38,3 +38,11 @@
     </div>
     <%= f.submit class: "ui green button" %>
 <% end %>
+
+<script>
+    var simplemde = new SimpleMDE({ element: document.getElementById("problem_solution") });
+    var simplemde1 = new SimpleMDE({ element: document.getElementById("problem_statement") });
+    $('.fa-eye').click(function(){
+        MathJax.typeset();
+    })
+</script>
