@@ -1,0 +1,7 @@
+<h1>Create a topic</h1>
+
+<%= form_for @topic, url: category_topics_path do |f| %>
+Title: <%= f.text_field :title %>
+Index: <%= f.text_field :index %>
+<%= f.submit %>
+<% end %>

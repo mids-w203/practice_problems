@@ -1,0 +1,7 @@
+<h1>Edit topic</h1>
+
+<%= form_for @topic do |f| %>
+Title: <%= f.text_field :title %>
+Index: <%= f.text_field :index %>
+<%= f.submit %>
+<% end %>

@@ -1,6 +1,21 @@
 <%= link_to "New Category", new_category_url %><br>
 
+<ul>
 <% @categories.each do |c| %>
+<li>
 <%= c.title %> | <%= link_to "edit", edit_category_url(c) %> |
-<%= link_to "delete", category_url(c), method: :delete %> <br/>
+<%= link_to "delete", category_url(c), method: :delete %> |
+<%= link_to "add topic", new_category_topic_url(c) %> 
+
+<ul>
+<% c.topics.each do |t| %>
+<li>
+<%= t.title %> | 
+<%= link_to "edit", edit_topic_url(t) %> |
+<%= link_to "delete", topic_url(t), method: :delete %> |
+</li>
 <% end %>
+</li>
+</ul>
+<% end %>
+</ul>
