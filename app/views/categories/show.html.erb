@@ -48,11 +48,13 @@
           <p style="font-size: 17px"><%= p.statement %></p> 
         </div>
         <div class="extra">
-          <i class="blue chat icon"></i>
-          121
-          |
+          <%= link_to problem_like_url(p) do %>
           <i class="red heart icon"></i>
-          121
+          <% end %>
+          <%= p.likes || 0 %>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <i class="blue chat icon"></i>
+          0
         
           <%= link_to problem_url(p), class: "ui right floated red basic icon mini button", method: :delete do %>
             <i class="trash icon"></i>

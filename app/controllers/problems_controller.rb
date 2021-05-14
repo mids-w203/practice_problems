@@ -1,5 +1,11 @@
 class ProblemsController < ApplicationController
-    def show
+  def like
+    @problem = Problem.find(params[:problem_id])
+    @problem.like
+    redirect_to request.referer
+  end
+
+  def show
         @problem = Problem.find(params[:id])
       end
     
