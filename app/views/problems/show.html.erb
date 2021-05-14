@@ -1,1 +1,15 @@
-<%= @problem.statement %>
+<div class="ui large breadcrumb">
+  <%= link_to root_url, class: "section" do %><i class="green home icon"></i><% end %>
+  <span class="divider">/</span>
+  <%= link_to @problem.topic.category, class: "section" do %><%= @problem.topic.category.title %><% end %>
+  <span class="divider">/</span>
+  <div class="section"><%= @problem.topic.title %></div>
+  <span class="divider">/</span>
+  <div class="active section">Problem <%= @problem.index %>:</div>
+</div>
+<br><br>
+<div class="ui padded segment">
+<p><%= markdown(@problem.statement) %></p>
+<h4 class="ui green dividing header">Solution</h4>
+<p><%= markdown(@problem.solution) %></p>
+</div>

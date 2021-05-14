@@ -34,7 +34,13 @@
 
     <div class="ui field">
         <%= f.label :solution %> 
-        <%= f.text_area :solution, rows: 8 %>
+        <p><%= f.text_area :solution, rows: 8 %></p>
     </div>
     <%= f.submit class: "ui blue button" %>
 <% end %>
+
+<script>
+    var simplemde = new SimpleMDE({ element: document.getElementById("problem_solution") });
+    var simplemde1 = new SimpleMDE({ element: document.getElementById("problem_statement") });
+</script>
+
