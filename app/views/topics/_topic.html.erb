@@ -1,7 +1,7 @@
 <div class="ui raised clearing segment">
 
   <div>
-    <%= link_to topic_url(t), class: "ui right floated red basic icon small button", method: :delete, data-confirm: "Are you sure?" do %>
+    <%= link_to topic_url(t), class: "ui right floated red basic icon small button", method: :delete, 'data-confirm': "Are you sure?" do %>
     <i class="trash icon"></i> Topic
     <% end %>
     <%= link_to edit_topic_url(t), class: "ui right floated blue basic icon small button" do %>
