@@ -17,7 +17,6 @@
   </h3>  
 
   <div class="ui divided items">
-    <%= t.problems.size %>
     <% t.problems.each do |p| %>
     <%= render partial: 'problems/problem', locals: {p: p} %>
     <% end %>
