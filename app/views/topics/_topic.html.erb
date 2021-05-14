@@ -18,7 +18,7 @@
 
   <div class="ui divided items">
     <% t.problems.each do |p| %>
-    <%= render partial: 'problems/problem', locals: {p: p} %>
+    <%= render partial: 'problems/problem', locals: {p => p} %>
     <% end %>
   </div>
 </div>
