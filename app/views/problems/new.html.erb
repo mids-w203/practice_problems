@@ -1,0 +1,9 @@
+<h1>Create a problem</h1>
+
+<%= form_for @problem do |f| %>
+Title: <%= f.text_field :title %>
+Statement: <%= f.text_area :statement %>
+Solution: <%= f.text_area :solution %>
+Index: <%= f.text_field :index %>
+<%= f.submit %>
+<% end %>

@@ -1,1 +1,10 @@
 <%= link_to "Categories", categories_url %>
+
+<div class="ui segment">
+    This repo contains pointers to practice problems that run alongside the
+    weekly concepts covered in MIDS w203. 
+</div>
+
+<% @categories.each do |c| %>
+<%= link_to c.title, c, class: "ui basic teal button" %>
+<% end %>
