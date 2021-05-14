@@ -36,6 +36,12 @@
         <%= f.label :solution %> 
         <p><%= f.text_area :solution, rows: 8 %></p>
     </div>
+
+    <div class="ui field">
+        <%= f.label :answer %>
+        <%= f.text_field :answer %>
+    </div>
+
     <%= f.submit class: "ui blue button" %>
 <% end %>
 
