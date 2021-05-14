@@ -42,5 +42,8 @@
 <script>
     var simplemde = new SimpleMDE({ element: document.getElementById("problem_solution") });
     var simplemde1 = new SimpleMDE({ element: document.getElementById("problem_statement") });
+    $('.fa-eye').click(function(){
+        MathJax.typeset();
+    })
 </script>
 
