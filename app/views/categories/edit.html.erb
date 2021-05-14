@@ -1,2 +1,7 @@
-<h1>Categories#edit</h1>
-<p>Find me in app/views/categories/edit.html.erb</p>
+<h1>Edit category</h1>
+
+<%= form_for @category do |f| %>
+Title: <%= f.text_field :title %>
+Index: <%= f.text_field :index %>
+<%= f.submit %>
+<% end %>
