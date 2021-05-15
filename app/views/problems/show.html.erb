@@ -5,9 +5,9 @@
 </div>
 <br><br>
 
-<div class="ui raised segment">
+<div class="ui raised padded problem segment">
   <div class="ui red basic label"><%= @problem.topic.title %></div>
-  <p><%= markdown(@problem.statement) %></p>
+  <%= markdown(@problem.statement) %>
   
   <div>
     <%= link_to problem_like_url(@problem) do %>
@@ -19,5 +19,7 @@
        0
   </div>      
   <h4 class="ui green dividing header">Solution</h4>
-  <p><%= markdown(@problem.solution) %></p>
+  <%= markdown(@problem.solution) %>
 </div>
+
+<br><br>
