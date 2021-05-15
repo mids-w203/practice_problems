@@ -17,6 +17,11 @@
           &nbsp;&nbsp;|&nbsp;&nbsp;
           <i class="green chat icon"></i>
           0
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <% unless p.solution.empty? %>
+          <i class="small green inverted check circular icon"></i>
+          Solved
+          <% end %>
           &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
           <%= link_to problem_url(p), method: :delete, 'data-confirm': "Are you sure?" do %>
           <i class="grey trash icon"></i>
