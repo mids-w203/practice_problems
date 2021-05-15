@@ -12,7 +12,7 @@ html, body {
 }
 
 .CodeMirror, .CodeMirror-scroll {
-	min-height: 150px;
+	min-height: 100px;
 }
 
 .problem.segment p {
