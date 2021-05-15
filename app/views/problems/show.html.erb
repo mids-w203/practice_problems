@@ -7,9 +7,8 @@
 
 <div class="ui raised padded problem segment">
   <div class="ui red basic label"><%= @problem.topic.title %></div>
-  <%= markdown(@problem.statement) %>
-  
-  <div>
+  &nbsp;
+  <span style="color: gray">
     <%= link_to problem_like_url(@problem) do %>
       <i class="red heart icon"></i>
       <% end %>
@@ -18,16 +17,19 @@
       <i class="green chat icon"></i>
       <%= @problem.comments.size %>
         &nbsp;&nbsp;|&nbsp;&nbsp;
-  <%= link_to problem_url(p), method: :delete, 'data-confirm': "Are you sure?" do %>
-  <i class="grey trash icon"></i>
-  <% end %>
-  |&nbsp;&nbsp;&nbsp;
-  <%= link_to edit_problem_url(p) do %>
-  <i class="grey edit icon"></i>
-  <% end %>
-
-  </div>      
-  <h4 class="ui green dividing header">Solution</h4>
+    <%= link_to problem_url(@problem), method: :delete, 'data-confirm': "Are you sure?" do %>
+    <i class="grey trash icon"></i>
+    <% end %>
+    |&nbsp;&nbsp;&nbsp;
+    <%= link_to edit_problem_url(@problem) do %>
+    <i class="grey edit icon"></i>
+    <% end %>
+  </span>      
+  <br><br>
+  <%= markdown(@problem.statement) %>
+  
+  <h4 class="ui green dividing header">Solution:</h4>
+  <br />
   <%= markdown(@problem.solution) %>
 </div>
 
