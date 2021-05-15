@@ -17,8 +17,11 @@
 </div>
 <br><br>
 
+<div class="ui basic segment">
+  <h1 class="ui dividing header"><%= @category.title %></h1>
+  <%= markdown(@category.extra || '') %>
+</div>
 
-<h1 class="ui dividing  header"><%= @category.title %></h1>
 <% @category.topics.each do |t| %>
 <%= render partial: 'topics/topic', locals: {t: t } %>
 <% end %>
