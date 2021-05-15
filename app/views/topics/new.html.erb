@@ -1,6 +1,8 @@
+<div class="ui basic segment">
 <h1>Create a topic</h1>
 <%= form_for @topic, url: category_topics_path, html: {class: "ui form"} do |f| %>
-    <div class="ui field">
+    <div class="two fields">
+        <div class="field">
         <%= f.label "Category" %>
         <div class="ui selection dropdown">
             <%= f.text_field :category_id, type: 'hidden', value: @category.id %>
@@ -12,16 +14,17 @@
             <% end %>
         </div>
         </div>
+        </div>
+        <div class="ui field">
+        <%= f.label :index %> 
+        <%= f.text_field :index %>
+        </div>
     </div>
+
     <div class="ui required field">
         <%= f.label :title %> 
         <%= f.text_field :title, required: true %>
     </div>
-
-    <div class="ui field">
-        <%= f.label :index %> 
-        <%= f.text_field :index %>
-    </div>
-
     <%= f.submit class: "ui green button" %>
 <% end %>
+</div>

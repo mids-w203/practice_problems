@@ -1,5 +1,7 @@
+<div class="ui basic segment">
 <h1>Edit topic</h1>
 <%= form_for @topic, html: {class: "ui form"} do |f| %>
+    <div class="two fields">
     <div class="ui field">
         <%= f.label "Category" %>
         <div class="ui selection dropdown">
@@ -13,15 +15,18 @@
             </div>
         </div>
     </div>
-    <div class="ui required field">
-        <%= f.label :title %> 
-        <%= f.text_field :title, required: true %>
-    </div>
 
     <div class="ui field">
         <%= f.label :index %> 
         <%= f.text_field :index %>
     </div>
 
+    </div>
+    <div class="ui required field">
+        <%= f.label :title %> 
+        <%= f.text_field :title, required: true %>
+    </div>
+
     <%= f.submit class: "ui blue button" %>
 <% end %>
+</div>
