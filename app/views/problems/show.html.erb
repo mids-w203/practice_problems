@@ -26,87 +26,70 @@
 
 <div class="ui basic segment">
 
-<div class="ui comments">
+<div class="ui threaded comments">
   <h3 class="ui dividing header">Comments</h3>
+  
+  <% @problem.comments.each do |c| %>
   <div class="comment">
     <a class="avatar">
-      <img src="/images/avatar/small/matt.jpg">
+      <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000">
     </a>
     <div class="content">
-      <a class="author">Matt</a>
+      <a class="author"><%= c.name %></a>
       <div class="metadata">
-        <span class="date">Today at 5:42PM</span>
+        <span class="date"><%= time_ago_in_words(c.created_at) %> ago</span>
       </div>
       <div class="text">
-        How artistic!
+        <%= c.body %>
       </div>
       <div class="actions">
-        <a class="reply">Reply</a>
+        <a class="reply comment">Reply</a>
       </div>
+
+      <%= form_for :comment, url: problem_comments_url(@problem), html: {class: "ui reply form", style: 'display: none'} do |f| %>
+      <div class="required field">
+        <%= f.text_field :name, required: true, placeholder: 'Your Name' %>
+      </div>
+       <div class="required field">
+        <%= f.text_field :body, rows: 1, placeholder: "Your Reply" %>
+      </div>
+      <%= f.text_field :parent_id, value: c.id, hidden: true %>
+      <%= f.submit "Reply", class: "ui red basic mini icon right floated button" %>
+      <% end %>
     </div>
-  </div>
-  <div class="comment">
-    <a class="avatar">
-      <img src="/images/avatar/small/elliot.jpg">
-    </a>
-    <div class="content">
-      <a class="author">Elliot Fu</a>
-      <div class="metadata">
-        <span class="date">Yesterday at 12:30AM</span>
-      </div>
-      <div class="text">
-        <p>This has been very useful for my research. Thanks as well!</p>
-      </div>
-      <div class="actions">
-        <a class="reply">Reply</a>
-      </div>
-    </div>
+
+    <% c.replies.each do |r| %>
     <div class="comments">
       <div class="comment">
         <a class="avatar">
-          <img src="/images/avatar/small/jenny.jpg">
+          <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000">
         </a>
         <div class="content">
-          <a class="author">Jenny Hess</a>
+          <a class="author"><%= r.name %></a>
           <div class="metadata">
-            <span class="date">Just now</span>
+            <span class="date"><%= time_ago_in_words(r.created_at) %> ago</span>
           </div>
           <div class="text">
-            Elliot you are always so right :)
-          </div>
-          <div class="actions">
-            <a class="reply">Reply</a>
+            <%= r.body %>
           </div>
         </div>
       </div>
     </div>
+    <% end %>
   </div>
-  <div class="comment">
-    <a class="avatar">
-      <img src="/images/avatar/small/joe.jpg">
-    </a>
-    <div class="content">
-      <a class="author">Joe Henderson</a>
-      <div class="metadata">
-        <span class="date">5 days ago</span>
-      </div>
-      <div class="text">
-        Dude, this is awesome. Thanks so much
-      </div>
-      <div class="actions">
-        <a class="reply">Reply</a>
-      </div>
+  <% end %>
+
+  <h4 class="ui header">Leave Comment</h4>
+  <%= form_for @problem.comments.new, url: problem_comments_url(@problem), html: {class: "ui comment form"} do |f| %>
+    <div class="required field">
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true %>
     </div>
-  </div>
-  <form class="ui reply form">
-    <div class="field">
-      <textarea></textarea>
+    <div class="required field">
+      <%= f.text_area :body %>
     </div>
-    <div class="ui blue labeled submit icon button">
-      <i class="icon edit"></i> Add Reply
-    </div>
-  </form>
+    <%= f.submit "Save", class: "ui green basic button" %>
+  <% end %>
+</div>
 </div>
 
-</div>
-<br><br>
