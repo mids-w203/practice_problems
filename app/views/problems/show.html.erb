@@ -29,7 +29,7 @@
 <div class="ui threaded comments">
   <h3 class="ui dividing header">Comments</h3>
   
-  <% @problem.comments.each do |c| %>
+  <% @problem.comments.where(parent: nil).each do |c| %>
   <div class="comment">
     <a class="avatar">
       <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000">
