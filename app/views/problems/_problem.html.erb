@@ -1,13 +1,5 @@
-<div class="ui top attached segment">
-  <%= link_to p, class: "description" do %>
-    <div style="font-size: 16px;color: black;">
-      <b>Problem <%= p.index %> <% if p.title.present? %><%= "(#{p.title})" %><% end %>:</b>
-      <%= markdown(p.statement) %>
-    </div> 
-  <% end %>
-</div>    
-    
-<div class="ui clearing bottom attached segment" style="color: gray;font-size: 0.8em!important">
+<div class="ui raised  clearing segment">
+<div class="" style="color: gray;font-size: 0.8em!important">
   <%= link_to p, class: "ui basic green right floated icon mini button" do %>
     see <i class="green right chevron icon"></i>
   <% end %>
@@ -22,13 +14,14 @@
   <% unless p.solution.empty? %>
   <i class="green inverted check icon"></i>
   Solved
-  &nbsp;&nbsp;|&nbsp;&nbsp;
-  <% end %>
-  <%= link_to problem_url(p), method: :delete, 'data-confirm': "Are you sure?" do %>
-  <i class="grey trash icon"></i>
-  <% end %>
-  |&nbsp;&nbsp;&nbsp;
-  <%= link_to edit_problem_url(p) do %>
-  <i class="grey edit icon"></i>
   <% end %>
 </div>      
+<br>
+<%= link_to p do %>
+  <div style="font-size: 16px;color: black;">
+    <b>Problem <%= p.index %> <% if p.title.present? %><%= "(#{p.title})" %><% end %>:</b>
+    <%= markdown(p.statement) %>
+  </div> 
+<% end %>
+</div>    
+    

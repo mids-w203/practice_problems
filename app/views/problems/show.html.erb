@@ -17,6 +17,15 @@
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <i class="green chat icon"></i>
       <%= @problem.comments.size %>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+  <%= link_to problem_url(p), method: :delete, 'data-confirm': "Are you sure?" do %>
+  <i class="grey trash icon"></i>
+  <% end %>
+  |&nbsp;&nbsp;&nbsp;
+  <%= link_to edit_problem_url(p) do %>
+  <i class="grey edit icon"></i>
+  <% end %>
+
   </div>      
   <h4 class="ui green dividing header">Solution</h4>
   <%= markdown(@problem.solution) %>

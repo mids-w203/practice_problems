@@ -1,7 +1,4 @@
-<div class="ui basic clearing segment">
-
-
-  <h3 class="ui dividing red header" style="padding-bottom:10px">
+<h3 class="ui dividing red header" style="padding-bottom:10px">
     <div>
     <%= link_to topic_url(t), class: "ui right floated  basic icon mini button", method: :delete, 'data-confirm': "Are you sure?" do %>
     <i class="red trash icon"></i> Topic
@@ -14,11 +11,8 @@
     <% end %>
     </div>
     #<%= t.title %>
-  </h3>  
-
-  <div class="">
-    <% t.problems.each do |p| %>
+</h3>  
+<% t.problems.each do |p| %>
     <%= render partial: 'problems/problem', locals: {p: p} %>
-    <% end %>
-  </div> 
-</div>
+<% end %>
+  
