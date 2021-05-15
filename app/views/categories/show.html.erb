@@ -1,3 +1,15 @@
+<div>
+  <%= link_to category_url(@category), class: "ui right floated basic icon mini button", method: :delete, 'data-confirm': 'Are you sure?' do %>
+    <i class="trash icon"></i> Category
+  <% end %>
+  <%= link_to edit_category_url(@category), class: "ui right floated basic icon mini button" do %>
+    <i class="edit icon"></i> Category
+  <% end %>
+  <%= link_to new_category_topic_url(@category), class: "ui right floated basic icon mini button" do %>
+    <i class="plus icon"></i> Topic
+  <% end %>
+</div>
+
 <div class="ui large breadcrumb">
   <%= link_to root_url, class: "section" do %><i class="green home icon"></i><% end %>
   <span class="divider">/</span>
@@ -5,17 +17,6 @@
 </div>
 <br><br>
 
-<div>
-  <%= link_to category_url(@category), class: "ui right floated basic red icon small button", method: :delete, 'data-confirm': 'Are you sure?' do %>
-    <i class="trash icon"></i> Category
-  <% end %>
-  <%= link_to edit_category_url(@category), class: "ui right floated basic blue icon small button" do %>
-    <i class="edit icon"></i> Category
-  <% end %>
-  <%= link_to new_category_topic_url(@category), class: "ui right floated green basic icon small button" do %>
-    <i class="plus icon"></i> Topic
-  <% end %>
-</div>
 
 <h1 class="ui  header"><%= @category.title %></h1>
 <% @category.topics.each do |t| %>
