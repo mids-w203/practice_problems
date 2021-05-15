@@ -1,35 +1,34 @@
-<div class="item">
-    <div class="content">
-        <%= link_to p, class: "description" do %>
-        <p style="font-size: 17px">
-          <b>Problem <%= p.index %>:</b>
-          <%= markdown(p.statement) %>
-        </p> 
-        <% end %>
-        <div class="extra">
-          <%= link_to p, class: "ui right floated icon button" do %>
-          <i class="green right chevron icon"></i>
-          <% end %>
-          <%= link_to problem_like_url(p) do %>
-          <i class="red heart icon"></i>
-          <% end %>
-          <%= p.likes || 0 %>
-          &nbsp;&nbsp;|&nbsp;&nbsp;
-          <i class="green chat icon"></i>
-          <%= p.comments.size %>
-          &nbsp;&nbsp;|&nbsp;&nbsp;
-          <% unless p.solution.empty? %>
-          <i class="small green inverted check circular icon"></i>
-          Solved
-          &nbsp;&nbsp;|&nbsp;&nbsp;
-          <% end %>
-          <%= link_to problem_url(p), method: :delete, 'data-confirm': "Are you sure?" do %>
-          <i class="grey trash icon"></i>
-          <% end %>
-          |&nbsp;&nbsp;&nbsp;
-          <%= link_to edit_problem_url(p) do %>
-            <i class="grey edit icon"></i>
-          <% end %>
-        </div>      
-    </div>
-</div>
+<div class="ui top attached segment">
+  <%= link_to p, class: "description" do %>
+    <div style="font-size: 16px;color: black;">
+      <b>Problem <%= p.index %> <% if p.title.present? %><%= "(#{p.title})" %><% end %>:</b>
+      <%= markdown(p.statement) %>
+    </div> 
+  <% end %>
+</div>    
+    
+<div class="ui clearing bottom attached segment" style="color: gray;font-size: 0.8em!important">
+  <%= link_to p, class: "ui basic green right floated icon mini button" do %>
+    see <i class="green right chevron icon"></i>
+  <% end %>
+  <%= link_to problem_like_url(p) do %>
+    <i class="red heart icon"></i>
+  <% end %>
+  <%= p.likes || 0 %>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <i class="chat icon"></i>
+  <%= p.comments.size %>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <% unless p.solution.empty? %>
+  <i class="green inverted check icon"></i>
+  Solved
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <% end %>
+  <%= link_to problem_url(p), method: :delete, 'data-confirm': "Are you sure?" do %>
+  <i class="grey trash icon"></i>
+  <% end %>
+  |&nbsp;&nbsp;&nbsp;
+  <%= link_to edit_problem_url(p) do %>
+  <i class="grey edit icon"></i>
+  <% end %>
+</div>      

@@ -3,8 +3,12 @@
     <i class="green plus icon"></i> Category
 <% end %>
 
+<div class="ui basic segment">
+This webapp contains pointers to practice problems that run alongside the weekly concepts covered in MIDS w203.
+<br /><br />
+
 <% @categories.each do |c| %>
 <%= link_to c.title, c, class: "ui basic green button" %>
 <% end %>
 </div>
-
+</div>
