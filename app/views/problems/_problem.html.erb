@@ -3,7 +3,7 @@
         <%= link_to p, class: "description" do %>
         <p style="font-size: 17px">
           <b>Problem <%= p.index %>:</b>
-          <%= p.statement %>
+          <%= markdown(p.statement) %>
         </p> 
         <% end %>
         <div class="extra">
