@@ -17,8 +17,8 @@
 </div>
 <br><br>
 
-<div class="ui basic segment">
-  <h1 class="ui dividing header"><%= @category.title %></h1>
+<h1 class="ui dividing header"><%= @category.title %></h1>
+<div class="ui segment">
   <%= markdown(@category.extra || '') %>
 </div>
 
