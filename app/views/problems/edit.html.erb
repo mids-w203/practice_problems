@@ -1,3 +1,4 @@
+<div class="ui basic segment">
 <h1>Edit problem</h1>
 <%= form_for @problem, html: {class: "ui form"} do |f| %>
     <div class="ui field">
@@ -43,6 +44,15 @@
     </div>
 
     <%= f.submit class: "ui blue button" %>
+
 <% end %>
+</div>
 
 
+<script>
+    var simplemde = new SimpleMDE({ element: document.getElementById("problem_solution") });
+    var simplemde1 = new SimpleMDE({ element: document.getElementById("problem_statement") });
+    $('.fa-eye').click(function(){
+        MathJax.typeset();
+    })
+</script>

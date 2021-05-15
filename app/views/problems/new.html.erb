@@ -1,3 +1,4 @@
+<div class="ui basic segment">
 <h1>Create a problem</h1>
 <%= form_for @problem, url: topic_problems_url(@problem.topic), html: {class: "ui form"} do |f| %>
     <div class="ui field">
@@ -44,6 +45,7 @@
 
     <%= f.submit class: "ui green button" %>
 <% end %>
+</div>
 
 <script>
     var simplemde = new SimpleMDE({ element: document.getElementById("problem_solution") });
