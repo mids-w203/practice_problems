@@ -2,11 +2,13 @@ class TopicsController < ApplicationController
   http_basic_authenticate_with name: 'mids', password: 'w203'
 
       def create
+        @categories = Category.all
         @category = Category.find(params[:topic][:category_id])
         @topic = @category.topics.new(topic_params)
         if @topic.save
           redirect_to @category
         else
+          puts @topic.errors
           render 'new'
         end
       end
