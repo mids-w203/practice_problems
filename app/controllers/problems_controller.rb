@@ -12,7 +12,7 @@ class ProblemsController < ApplicationController
       def create
         @problem = Problem.new(problem_params)
         if @problem.save
-          redirect_to @problem.topic.category
+          redirect_to @problem
         else
           render 'new'
         end
@@ -30,7 +30,7 @@ class ProblemsController < ApplicationController
       def update
         @problem = Problem.find(params[:id])
         if @problem.update(problem_params)
-          redirect_to @problem.topic.category
+          redirect_to @problem
         else
           render 'edit'
         end
