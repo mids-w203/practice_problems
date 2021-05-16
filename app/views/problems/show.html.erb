@@ -26,6 +26,7 @@
     <% end %>
   </span>      
   <br><br>
+  <% if @problem.title.present? %><h4 class="ui header">(<%= @problem.title %>)</h4><% end %>
   <%= markdown(@problem.statement) %>
   
   <% if @problem.answer.present? %><h4 class="ui red header">Answer: <%= @problem.answer %></h4><% end %>
