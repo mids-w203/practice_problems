@@ -48,7 +48,7 @@
           <i class="dropdown icon"></i>
           <div class="menu">
             <% Category.all.each do |c| %>
-              <%= link_to c, class: "item" %><%= c.title %><% end %>
+              <%= link_to c, class: "item" do %><%= c.title %><% end %>
             <% end %>
           </div>
         </div>
