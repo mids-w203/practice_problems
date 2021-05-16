@@ -28,6 +28,8 @@
   <br><br>
   <%= markdown(@problem.statement) %>
   
+  <% if @problem.answer.present? %><h4 class="ui red header">Answer: <%= @problem.answer %></h4><% end %>
+
   <h4 class="ui green dividing header">Solution:</h4>
   <br />
   <%= markdown(@problem.solution) %>
