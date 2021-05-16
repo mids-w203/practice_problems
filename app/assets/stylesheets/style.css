@@ -19,3 +19,12 @@ html, body {
 .problem.segment p {
     font-size: 18px;
 }
+
+.comment:hover .reply.comment {
+    color: #db2828!important;
+}
+
+.ui.reply.form {
+    padding-left: 27px;
+    border-left: 1px solid lightgray;
+}

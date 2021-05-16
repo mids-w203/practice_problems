@@ -37,14 +37,11 @@
 
 <div class="ui basic segment">
 
-<div class="ui threaded comments">
+<div class="ui comments">
   <h3 class="ui dividing header">Comments</h3>
   
-  <% @problem.comments.where(parent: nil).each do |c| %>
+  <% @problem.comments.where(parent: nil).order(created_at: :desc).each do |c| %>
   <div class="comment">
-    <a class="avatar">
-      <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000">
-    </a>
     <div class="content">
       <a class="author"><%= c.name %></a>
       <div class="metadata">
@@ -69,12 +66,9 @@
       <% end %>
     </div>
 
-    <% c.replies.each do |r| %>
+    <% c.replies.order(created_at: :asc).each do |r| %>
     <div class="comments">
       <div class="comment">
-        <a class="avatar">
-          <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000">
-        </a>
         <div class="content">
           <a class="author"><%= r.name %></a>
           <div class="metadata">
@@ -93,12 +87,12 @@
   <h4 class="ui header">Leave Comment</h4>
   <%= form_for @problem.comments.new, url: problem_comments_url(@problem), html: {class: "ui comment form"} do |f| %>
     <div class="required field">
-      <%= f.label :name %>
-      <%= f.text_field :name, required: true %>
+      <%= f.text_field :name, required: true, placeholder: 'Your name' %>
     </div>
-    <div class="required field">
-      <%= f.text_area :body %>
-    </div>
+    
+  <div class="required field">
+      <%= f.text_area :body, rows: 3, placeholder: 'Your comment' %>
+  </div>
     <%= f.submit "Save", class: "ui green basic button" %>
   <% end %>
 </div>
