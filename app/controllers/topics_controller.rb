@@ -8,9 +8,6 @@ class TopicsController < ApplicationController
         if @topic.save
           redirect_to @category
         else
-          @topic.errors.each do |e|
-            puts e
-          end
           render 'new'
         end
       end
