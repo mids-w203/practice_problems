@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  http_basic_authenticate_with name: 'mids', password: 'w203'
+
       def create
         @category = Category.find(params[:topic][:category_id])
         @topic = @category.topics.new(topic_params)
