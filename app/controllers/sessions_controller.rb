@@ -14,16 +14,24 @@ class SessionsController < ApplicationController
         res = HTTParty.get(url, headers: headers)
         user=res["user"]
     
-        puts user
-        @user = User.find_by_email(user["email"]) ||
+        @user = User.find_by_email(user["email"])
+
+        if @user
+            @user.update_attribute(:full_name,  user["name"])
+            @user.update_attribute(:picture,    user["image_512"])
+            @user.update_attribute(:slack_token,token)
+            
+        else    
             User.create!(
                 provider: auth_hash.provider,
                 uid: user["id"],
+                slack_token: token,
                 full_name: user["name"],
                 email: user["email"],
                 picture: user["image_512"]
             )
-        
+        end
+
         log_user_in(@user)
 
         redirect_to root_url
