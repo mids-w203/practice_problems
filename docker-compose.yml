@@ -9,7 +9,6 @@ services:
     command: rails s -b 0.0.0.0
     volumes:
       - '.:/usr/src/app'
-    environment: 
   postgres:
     image: postgres:13
     ports:
