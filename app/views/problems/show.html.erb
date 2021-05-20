@@ -69,7 +69,7 @@
         <%= f.text_area :body, placeholder: "Your Reply", required: true %>
       </div>
       <%= f.text_field :parent_id, value: c.id, hidden: true %>
-      <%= f.submit "Reply", class: "ui red basic mini icon diabled button" %>
+      <%= f.submit "Reply", class: "ui red basic mini icon button" %>
       <% end %>
     </div>
 
@@ -100,7 +100,7 @@
   <div class="required field">
       <%= f.text_area :body, placeholder: 'Your comment', required: true %>
   </div>
-    <%= f.submit "Save", class: "ui green basic disabled button" %>
+    <%= f.submit "Save", class: "ui green basic button" %>
   <% end %>
 </div>
 </div>
