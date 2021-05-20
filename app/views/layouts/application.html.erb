@@ -36,14 +36,13 @@
 
   <body>
     <div class="ui container basic segment">
-    <div class="ui text menu">
+    <div class="ui secondary menu">
       <a class="header item" href="/"><i class="big home icon"></i></a>
-      <h3 class="item">
-        w203: Practice Problems
-      </h3>
+      <div class="item">
+        <b>w203</b>
+      </div>
       
-      <div class="right menu">
-        <div class="ui dropdown item">
+      <div class="ui dropdown item">
           Categories
           <i class="dropdown icon"></i>
           <div class="menu">
@@ -53,10 +52,16 @@
           </div>
         </div>
 
+      <div class="right menu">
         <% if logged_in? %>
-        <%= link_to logout_url, class: "item" do %>
-          <div class="ui red button">Log out</div>
-        <% end %>
+        <div class="ui dropdown item"> 
+          <img class="ui mini circular image" src="<%= current_user.picture %>">
+          <i class="dropdown icon"></i>
+          
+          <div class="menu">
+            <%= link_to logout_url, class: "item" do %>Log out<% end %>
+          </div>
+        </div>
         <% else %>
           <%= link_to "/auth/slack", class: "item" do %>
           <div class="ui green basic icon button"><i class="red slack hash icon"></i> Login</i></div>
