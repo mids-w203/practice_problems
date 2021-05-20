@@ -7,8 +7,9 @@ $( document ).on('turbolinks:load',function() {
 
         if(elm.is(':visible'))
             elm.hide();
-        else
+        else {
+            $('.reply.form').hide();
             elm.show();
-            
+        }
     });
 });

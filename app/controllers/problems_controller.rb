@@ -1,6 +1,7 @@
 class ProblemsController < ApplicationController
-  http_basic_authenticate_with name: 'mids', password: 'w203', except: [:show,:like]
-  
+  before_action :logged_in_user
+  before_action :instructor_user, except: [:show,:like]
+
   def like
     @problem = Problem.find(params[:problem_id])
     @problem.like

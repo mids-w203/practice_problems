@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
-  http_basic_authenticate_with name: 'mids', password: 'w203'
+  before_action :logged_in_user
+  before_action :instructor_user
 
       def create
         @categories = Category.all

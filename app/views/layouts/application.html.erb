@@ -52,6 +52,16 @@
             <% end %>
           </div>
         </div>
+
+        <% if logged_in? %>
+        <%= link_to logout_url, class: "item" do %>
+          <div class="ui red button">Log out</div>
+        <% end %>
+        <% else %>
+          <%= link_to "/auth/slack", class: "item" do %>
+          <div class="ui green icon button">Sign in with Slack</i></div>
+          <% end %>        
+        <% end %>
       </div>
     </div>
   </div>

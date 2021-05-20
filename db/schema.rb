@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_15_165022) do
+ActiveRecord::Schema.define(version: 2021_05_20_131108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,15 +24,15 @@ ActiveRecord::Schema.define(version: 2021_05_15_165022) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "name"
     t.text "body"
     t.bigint "parent_id"
     t.bigint "problem_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "email"
+    t.bigint "user_id", null: false
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["problem_id"], name: "index_comments_on_problem_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "problems", force: :cascade do |t|
@@ -57,8 +57,21 @@ ActiveRecord::Schema.define(version: 2021_05_15_165022) do
     t.index ["category_id"], name: "index_topics_on_category_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "full_name", null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "nickname"
+    t.string "email"
+    t.boolean "instructor", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "picture"
+  end
+
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "problems"
+  add_foreign_key "comments", "users"
   add_foreign_key "problems", "topics"
   add_foreign_key "topics", "categories"
 end

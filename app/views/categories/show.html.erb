@@ -1,3 +1,4 @@
+<% if current_user.instructor? %>
 <div>
   <%= link_to category_url(@category), class: "ui right floated basic icon mini button", method: :delete, 'data-confirm': 'Are you sure?' do %>
     <i class="red trash icon"></i> Category
@@ -9,6 +10,7 @@
     <i class="green plus icon"></i> Topic
   <% end %>
 </div>
+<% end %>
 
 <div class="ui large breadcrumb">
   <%= link_to root_url, class: "section" do %><i class="large black home icon"></i><% end %>

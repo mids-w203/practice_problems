@@ -16,13 +16,15 @@
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <i class="green chat icon"></i>
       <%= @problem.comments.size %>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-    <%= link_to problem_url(@problem), method: :delete, 'data-confirm': "Are you sure?" do %>
+      <% if current_user.instructor? %>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <%= link_to problem_url(@problem), method: :delete, 'data-confirm': "Are you sure?" do %>
     <i class="grey trash icon"></i>
     <% end %>
     |&nbsp;&nbsp;&nbsp;
     <%= link_to edit_problem_url(@problem) do %>
     <i class="grey edit icon"></i>
+    <% end %>
     <% end %>
   </span>      
   <br><br>
@@ -33,7 +35,7 @@
 
   <h4 class="ui green dividing header">Solution:</h4>
   <br />
-  <div style="overflow-x: auto;overflow-y: visible">
+  <div style="overflow-x: auto">
   <%= markdown(@problem.solution) %>
   </div>
 </div>
@@ -42,18 +44,21 @@
 
 <div class="ui basic segment">
 
-<div class="ui comments">
+<div class="ui threaded comments">
   <h3 class="ui dividing header">Comments</h3>
   
   <% @problem.comments.where(parent: nil).order(created_at: :desc).each do |c| %>
   <div class="comment">
+    <a class="avatar">
+      <img src="<%= c.user.picture %>">
+    </a>
     <div class="content">
-      <a class="author"><%= c.name %></a>
+      <a class="author"><%= c.user.full_name %></a>
       <div class="metadata">
         <span class="date"><%= time_ago_in_words(c.created_at) %> ago</span>
       </div>
       <div class="text">
-        <%= c.body %>
+        <%= markdown(c.body) %>
       </div>
       <div class="actions">
         <a class="reply comment">Reply</a>
@@ -61,26 +66,26 @@
 
       <%= form_for :comment, url: problem_comments_url(@problem), html: {class: "ui reply form", style: 'display: none'} do |f| %>
       <div class="required field">
-        <%= f.text_field :name, required: true, placeholder: 'Your Name' %>
-      </div>
-       <div class="required field">
-        <%= f.text_field :body, rows: 1, placeholder: "Your Reply" %>
+        <%= f.text_area :body, placeholder: "Your Reply", required: true %>
       </div>
       <%= f.text_field :parent_id, value: c.id, hidden: true %>
-      <%= f.submit "Reply", class: "ui red basic mini icon right floated button" %>
+      <%= f.submit "Reply", class: "ui red basic mini icon diabled button" %>
       <% end %>
     </div>
 
     <% c.replies.order(created_at: :asc).each do |r| %>
     <div class="comments">
       <div class="comment">
+        <a class="avatar">
+          <img src="<%= r.user.picture %>">
+        </a>
         <div class="content">
-          <a class="author"><%= r.name %></a>
+          <a class="author"><%= r.user.full_name %></a>
           <div class="metadata">
             <span class="date"><%= time_ago_in_words(r.created_at) %> ago</span>
           </div>
           <div class="text">
-            <%= r.body %>
+            <%= markdown(r.body) %>
           </div>
         </div>
       </div>
@@ -91,15 +96,32 @@
 
   <h4 class="ui header">Leave Comment</h4>
   <%= form_for @problem.comments.new, url: problem_comments_url(@problem), html: {class: "ui comment form"} do |f| %>
-    <div class="required field">
-      <%= f.text_field :name, required: true, placeholder: 'Your name' %>
-    </div>
-    
+  
   <div class="required field">
-      <%= f.text_area :body, rows: 3, placeholder: 'Your comment' %>
+      <%= f.text_area :body, placeholder: 'Your comment', required: true %>
   </div>
-    <%= f.submit "Save", class: "ui green basic button" %>
+    <%= f.submit "Save", class: "ui green basic disabled button" %>
   <% end %>
 </div>
 </div>
 
+
+<script>
+  <%# $('textarea').each(function() {
+    var simplemde = new SimpleMDE({
+        element: this,
+    });
+    simplemde.render(); 
+  });
+
+    $('.fa-eye').click(function(){
+        MathJax.typeset();
+    });
+   $('.editor-preview').on('change',function() {
+     alert();
+     if($(this).text() != '') {
+       alert();
+       $(this).parent().parent().find('.button').prop('diabled', false);
+     }
+  }); %>
+</script>

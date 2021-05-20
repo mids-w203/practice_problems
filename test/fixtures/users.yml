@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full_name: MyString
+  provider: MyString
+  uid: MyString
+  nickname: MyString
+  email: MyString
+  instructor: false
+
+two:
+  full_name: MyString
+  provider: MyString
+  uid: MyString
+  nickname: MyString
+  email: MyString
+  instructor: false

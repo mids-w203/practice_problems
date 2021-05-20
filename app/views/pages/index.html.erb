@@ -1,6 +1,8 @@
+<% if current_user.instructor? %>
 <div class="ui clearing basic segment">
 <%= link_to new_category_url, class: "ui mini right floated basic icon button" do %>
     <i class="green plus icon"></i> Category
+<% end %>
 <% end %>
 
 <div class="ui basic segment">
