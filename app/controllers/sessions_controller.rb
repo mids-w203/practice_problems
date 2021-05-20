@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     
     def create
         auth_hash = request.env['omniauth.auth']
+        
         token=auth_hash.credentials.token
         url = 'https://slack.com/api/users.identity'
         headers= {
