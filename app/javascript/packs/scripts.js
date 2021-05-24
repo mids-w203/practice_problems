@@ -12,4 +12,19 @@ $( document ).on('turbolinks:load',function() {
             elm.show();
         }
     });
+    $('.edit.form').hide();
+    $('.edit.comment').click(function(){
+        var text = $(this).parent().parent().children('.text');
+        var form = $(this).parent().parent().children('.edit.form');
+
+        if(form.is(':visible')) {
+            form.hide();
+            text.show();
+        }
+        else {
+            form.show();
+            text.hide();
+        }
+    });
+    
 });

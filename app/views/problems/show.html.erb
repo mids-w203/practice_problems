@@ -57,13 +57,21 @@
       <div class="metadata">
         <span class="date"><%= time_ago_in_words(c.created_at) %> ago</span>
       </div>
+      <%= form_for c, html: {class: 'ui edit form' } do |f| %>
+        <div class="field">
+        <%= f.text_area :body, rows: 2 %>
+        </div>
+        <%= f.submit 'save', class: 'ui mini basic green icon button' %>
+        <br><br>
+      <% end %>
       <div class="text">
         <%= markdown(c.body) %>
       </div>
       <div class="actions">
         <a class="reply comment">Reply</a>
         <% if current_user == c. user %>
-        <%= link_to 'delete', comment_url(c), method: :delete %>
+        <a class="edit comment">edit</a>
+        <%= link_to 'delete', comment_url(c), method: :delete, 'data-confirm': 'Are you sure?' %>
         <% end %>
       </div>
 
@@ -87,12 +95,22 @@
           <div class="metadata">
             <span class="date"><%= time_ago_in_words(r.created_at) %> ago</span>
           </div>
+          
+          <%= form_for r, html: {class: 'ui edit form' } do |f| %>
+          <div class="field">
+          <%= f.text_area :body, rows: 2 %>
+          </div>
+          <%= f.submit 'save', class: 'ui mini basic green icon button' %>
+          <br><br>
+          <% end %>
+          
           <div class="text">
             <%= markdown(r.body) %>
           </div>
           <div class="actions">
             <% if current_user == r. user %>
-            <%= link_to 'delete', comment_url(r), method: :delete %>
+            <a class="edit comment">edit</a>
+            <%= link_to 'delete', comment_url(r), method: :delete, 'data-confirm': 'Are you sure?' %>
             <% end %>
           </div>
         </div>

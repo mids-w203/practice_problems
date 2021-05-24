@@ -15,7 +15,9 @@ class CommentsController < ApplicationController
     end    
 
     def update
-
+        if @comment.update(comment_params)
+            redirect_to request.referer
+        end
     end
 
     def destroy
