@@ -19,7 +19,3 @@ html, body {
 .problem.segment p {
     font-size: 18px;
 }
-
-.comment:hover .reply.comment {
-    color: #db2828!important;
-}

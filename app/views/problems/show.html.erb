@@ -62,6 +62,9 @@
       </div>
       <div class="actions">
         <a class="reply comment">Reply</a>
+        <% if current_user == c. user %>
+        <%= link_to 'delete', comment_url(c), method: :delete %>
+        <% end %>
       </div>
 
       <%= form_for :comment, url: problem_comments_url(@problem), html: {class: "ui reply form", style: 'display: none'} do |f| %>
@@ -86,6 +89,11 @@
           </div>
           <div class="text">
             <%= markdown(r.body) %>
+          </div>
+          <div class="actions">
+            <% if current_user == r. user %>
+            <%= link_to 'delete', comment_url(r), method: :delete %>
+            <% end %>
           </div>
         </div>
       </div>

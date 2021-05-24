@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     before_action :logged_in_user
+    before_action :correct_user, only: [:update, :destroy]
 
     def create 
         @problem = Problem.find(params[:problem_id])
@@ -13,10 +14,24 @@ class CommentsController < ApplicationController
         end
     end    
 
+    def update
 
+    end
+
+    def destroy
+        @comment.destroy
+        redirect_to request.referer
+    end
+    
+    
     private 
-
+    
     def comment_params 
         params.require(:comment).permit(:body, :parent_id)
+    end
+    
+    def correct_user
+        @comment = Comment.find(params[:id])
+        redirect_to root_url unless @comment.user == current_user
     end
 end
