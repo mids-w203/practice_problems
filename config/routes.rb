@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :categories, shallow: true do
     resources :topics, shallow: true do
       resources :problems, shallow: true do
-        resources :comments
+        resources :comments do 
+          get 'like'
+          get 'unlike'  
+        end
         get 'like'
         get 'unlike'
       end

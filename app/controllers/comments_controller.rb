@@ -2,6 +2,18 @@ class CommentsController < ApplicationController
     before_action :logged_in_user
     before_action :correct_user, only: [:update, :destroy]
 
+    def like
+        @comment = Comment.find(params[:comment_id])
+        @comment.like(current_user)
+        redirect_to request.referer
+    end
+    
+    def unlike
+        @comment = Comment.find(params[:comment_id])
+        @comment.unlike(current_user)
+        redirect_to request.referer
+    end
+
     def create 
         @problem = Problem.find(params[:problem_id])
         @comment = @problem.comments.new(comment_params)

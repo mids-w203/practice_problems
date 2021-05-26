@@ -22,7 +22,7 @@
     <% end %>
 
       &nbsp;&nbsp;|&nbsp;&nbsp;
-      <i class="green chat icon"></i>
+      <i class="chat icon"></i>
       <%= @problem.comments.size %>
       <% if current_user.instructor? %>
       &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -64,6 +64,17 @@
       <a class="author"><%= c.user.full_name %></a>
       <div class="metadata">
         <span class="date"><%= time_ago_in_words(c.created_at) %> ago</span>
+        <% if c.liked?(current_user) %>
+          <%= link_to comment_unlike_url(c), title: 'unlike' do %>
+          <i class="red heart icon"></i>
+          <span style="color: #db2828"><%= c.likes %></span>
+        <% end %>
+        <% else %>
+          <%= link_to comment_like_url(c), title: 'like' do %>
+          <i class="grey heart icon"></i>
+          <span style="color: gray"><%= c.likes %></span>
+          <% end %>
+        <% end %>
       </div>
       <%= form_for c, html: {class: 'ui edit form' } do |f| %>
         <div class="field">
@@ -102,6 +113,17 @@
           <a class="author"><%= r.user.full_name %></a>
           <div class="metadata">
             <span class="date"><%= time_ago_in_words(r.created_at) %> ago</span>
+            <% if r.liked?(current_user) %>
+              <%= link_to comment_unlike_url(r), title: 'unlike' do %>
+              <i class="red heart icon"></i>
+              <span style="color: #db2828"><%= r.likes %></span>
+            <% end %>
+            <% else %>
+              <%= link_to comment_like_url(r), title: 'like' do %>
+              <i class="grey heart icon"></i>
+              <span style="color: gray"><%= r.likes %></span>
+              <% end %>
+            <% end %>
           </div>
           
           <%= form_for r, html: {class: 'ui edit form' } do |f| %>
