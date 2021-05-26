@@ -3,10 +3,19 @@
   <%= link_to p, class: "ui basic green right floated icon mini button" do %>
     see <i class="green right chevron icon"></i>
   <% end %>
-  <%= link_to problem_like_url(p) do %>
+
+  <% if p.liked?(current_user) %>
+    <%= link_to problem_unlike_url(p), title: 'unlike' do %>
     <i class="red heart icon"></i>
+    <span style="color: #db2828"><%= p.likes %></span>
+    <% end %>
+  <% else %>
+    <%= link_to problem_like_url(p), title: 'like' do %>
+    <i class="grey heart icon"></i>
+    <span style="color: gray"><%= p.likes %></span>
+    <% end %>
   <% end %>
-  <%= p.likes || 0 %>
+
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <i class="chat icon"></i>
   <%= p.comments.size %>

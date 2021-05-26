@@ -1,10 +1,16 @@
 class ProblemsController < ApplicationController
   before_action :logged_in_user
-  before_action :instructor_user, except: [:show,:like]
+  before_action :instructor_user, except: [:show,:like, :unlike]
 
   def like
     @problem = Problem.find(params[:problem_id])
-    @problem.like
+    @problem.like(current_user)
+    redirect_to request.referer
+  end
+
+  def unlike
+    @problem = Problem.find(params[:problem_id])
+    @problem.unlike(current_user)
     redirect_to request.referer
   end
 

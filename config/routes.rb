@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :problems, shallow: true do
         resources :comments
         get 'like'
+        get 'unlike'
       end
     end
   end

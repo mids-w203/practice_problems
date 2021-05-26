@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_224754) do
+ActiveRecord::Schema.define(version: 2021_05_26_131116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 2021_05_20_224754) do
     t.index ["category_id"], name: "index_topics_on_category_id"
   end
 
+  create_table "user_likes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "likable_type", null: false
+    t.bigint "likable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["likable_type", "likable_id"], name: "index_user_likes_on_likable"
+    t.index ["user_id", "likable_type", "likable_id"], name: "index_user_likes_on_user_id_and_likable_type_and_likable_id", unique: true
+    t.index ["user_id"], name: "index_user_likes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "full_name", null: false
     t.string "provider"
@@ -75,4 +86,5 @@ ActiveRecord::Schema.define(version: 2021_05_20_224754) do
   add_foreign_key "comments", "users"
   add_foreign_key "problems", "topics"
   add_foreign_key "topics", "categories"
+  add_foreign_key "user_likes", "users"
 end

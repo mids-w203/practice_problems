@@ -9,10 +9,18 @@
   <div class="ui red basic label"><%= @problem.topic.title %></div>
   &nbsp;
   <span style="color: gray">
-    <%= link_to problem_like_url(@problem) do %>
+    <% if @problem.liked?(current_user) %>
+      <%= link_to problem_unlike_url(@problem), title: 'unlike' do %>
       <i class="red heart icon"></i>
+      <span style="color: #db2828"><%= @problem.likes %></span>
       <% end %>
-      <%= @problem.likes || 0 %>
+    <% else %>
+      <%= link_to problem_like_url(@problem), title: 'like' do %>
+      <i class="grey heart icon"></i>
+      <span style="color: gray"><%= @problem.likes %></span>
+      <% end %>
+    <% end %>
+
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <i class="green chat icon"></i>
       <%= @problem.comments.size %>
