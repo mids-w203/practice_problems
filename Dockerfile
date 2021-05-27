@@ -10,3 +10,4 @@ COPY . .
 
 RUN bundle install
 RUN rails webpacker:install
+

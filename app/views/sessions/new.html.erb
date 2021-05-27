@@ -1,12 +1,5 @@
-<div class="ui raised padded segment" style="margin: auto;max-width: 400px;margin-top: 10vh">
-<h1 class="ui centered dividing red header">Login</h1>
-<div class="ui yellow message">
-Log in with the email associated with the <i>ucbischool.slack.com</i> workspace.
-</div>
-<%= form_for :session, url: login_url, html: {class: "ui login form"} do |f| %>
-<div class="field">
-    <%= f.text_field :email, placeholder: 'Slack email', required: true %>
-</div>
-<%= f.submit "Login", class: "ui big fluid green button" %>
-<% end %>
+<div class="ui raised padded basic segment center aligned" style="margin-top: 10vh">
+    <%= link_to '/auth/slack', class: "ui huge basic red button" do %>
+        <i class="green slack hash icon"></i>Sign In with Slack
+    <% end %>
 </div>
