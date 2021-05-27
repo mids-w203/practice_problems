@@ -1,24 +1,6 @@
-# README
+# Practice Problems
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+We (by which we mean Sushovan) have created a website with practice problems for the class. You've found the back-end for that site.
 
-Things you may want to cover:
+To access the  client-end of the site go to this url: https://mids-w203.github.io/practice_problems and sign in with your `ucbischool` slack credentials.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
