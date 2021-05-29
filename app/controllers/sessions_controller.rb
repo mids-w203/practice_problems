@@ -2,9 +2,9 @@ class SessionsController < ApplicationController
     def create
         auth_hash = request.env['omniauth.auth']
         token = auth_hash.credentials.token
-            
-        client = Slack::Web::Client.new
-        user_info = client.users_identity(token: token).user
+
+        client = Slack::Web::Client.new({ token: token })
+        user_info = client.users_identity.user
 
         @user = User.find_by_email(user_info.email)
 
