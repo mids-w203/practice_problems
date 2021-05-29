@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
         client = Slack::Web::Client.new({ token: token })
         user_info = client.users_identity.user
-
+        puts user_info
         @user = User.find_by_email(user_info.email)
 
         if @user 
