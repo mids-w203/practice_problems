@@ -2,6 +2,12 @@ class CommentsController < ApplicationController
     before_action :logged_in_user
     before_action :correct_user, only: [:update, :destroy]
 
+    def slack_users
+        client = Slack::Web::Client.new
+        @users = client.users_list.members
+
+    end
+
     def like
         @comment = Comment.find(params[:comment_id])
         @comment.like(current_user)
@@ -19,16 +25,14 @@ class CommentsController < ApplicationController
         @comment = @problem.comments.new(comment_params)
         @comment.user = current_user
         if @comment.save
-            # if @comment.parent
-            #     CommentMailer.reply_email(@comment).deliver_now
-            # end
-            redirect_to request.referer
+            send_slack_msg(@comment)
+            redirect_to problem_url(@comment.problem, comment_id: @comment.id)
         end
     end    
 
     def update
         if @comment.update(comment_params)
-            redirect_to request.referer
+            redirect_to problem_url(@comment.problem, comment_id: @comment.id)
         end
     end
 
@@ -47,5 +51,45 @@ class CommentsController < ApplicationController
     def correct_user
         @comment = Comment.find(params[:id])
         redirect_to root_url unless @comment.user == current_user
+    end
+
+    def send_slack_msg(comment)        
+        if params[:tags].present?
+            tags = "\n "
+            params[:tags].split(',').each do |tag|
+                tags += "<@#{tag}> "
+            end
+        end
+        
+        if comment.parent
+            msg = "<@#{comment.parent.user.uid}>: *#{comment.user.full_name}* has posted a <#{url_for comment.problem}?comment_id=#{comment.id}|reply> to a comment."
+        else
+            msg = "*#{comment.user.full_name}* has posted this <#{url_for comment.problem}?comment_id=#{comment.id}|comment>:"            
+        end
+        
+        client = Slack::Web::Client.new
+        client.chat_postMessage(
+            channel: ENV['SLACK_CHANNEL'],
+            username: 'w203 Bot',
+	        blocks: [
+                {
+                    type: "section",
+                    text: {
+                        type: "mrkdwn",
+                        text: msg,
+                    }
+                },
+                {
+			        type: "divider"
+		        },
+                {
+                    type: "section",
+                    text: {
+                        type: "mrkdwn",
+                        text: "#{comment.body} #{tags}",
+			    }
+		    }
+	        ]
+        )
     end
 end

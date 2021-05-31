@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
+  get :slack_users, to: 'comments#slack_users'
 
   resources :categories, shallow: true do
     resources :topics, shallow: true do

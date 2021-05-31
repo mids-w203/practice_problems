@@ -1,0 +1,42 @@
+<div class="comment" id="comment-<%= r.id %>">
+    <a class="avatar">
+        <img src="<%= r.user.picture %>">
+    </a>
+        
+    <div class="content">
+        <a class="author"><%= r.user.full_name %></a>
+        <div class="metadata">
+            <span class="date"><%= time_ago_in_words(r.created_at) %> ago</span>
+            <% if r.liked?(current_user) %>
+              <%= link_to comment_unlike_url(r), title: 'unlike' do %>
+              <i class="red heart icon"></i>
+              <span style="color: #db2828"><%= r.likes %></span>
+            <% end %>
+            <% else %>
+              <%= link_to comment_like_url(r), title: 'like' do %>
+              <i class="grey heart icon"></i>
+              <span style="color: gray"><%= r.likes %></span>
+              <% end %>
+            <% end %>
+        </div>
+          
+        <%= form_for r, html: {class: 'ui edit form' } do |f| %>
+            <div class="field">
+                <%= f.text_area :body, rows: 2 %>
+            </div>
+            <%= f.submit 'save', class: 'ui mini basic green icon button' %>
+            <br><br>
+        <% end %>
+          
+        <div class="text">
+            <%= markdown(r.body) %>
+        </div>
+        
+        <div class="actions">
+            <% if current_user == r. user %>
+            <a class="edit comment">edit</a>
+            <%= link_to 'delete', comment_url(r), method: :delete, 'data-confirm': 'Are you sure?' %>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -50,134 +50,16 @@
 
 <br /><br />
 
-<div class="ui basic segment">
-
-<div class="ui threaded comments">
-  <h3 class="ui dividing header">Comments</h3>
-  
-  <% @problem.comments.where(parent: nil).order(created_at: :desc).each do |c| %>
-  <div class="comment">
-    <a class="avatar">
-      <img src="<%= c.user.picture %>">
-    </a>
-    <div class="content">
-      <a class="author"><%= c.user.full_name %></a>
-      <div class="metadata">
-        <span class="date"><%= time_ago_in_words(c.created_at) %> ago</span>
-        <% if c.liked?(current_user) %>
-          <%= link_to comment_unlike_url(c), title: 'unlike' do %>
-          <i class="red heart icon"></i>
-          <span style="color: #db2828"><%= c.likes %></span>
-        <% end %>
-        <% else %>
-          <%= link_to comment_like_url(c), title: 'like' do %>
-          <i class="grey heart icon"></i>
-          <span style="color: gray"><%= c.likes %></span>
-          <% end %>
-        <% end %>
-      </div>
-      <%= form_for c, html: {class: 'ui edit form' } do |f| %>
-        <div class="field">
-        <%= f.text_area :body, rows: 2 %>
-        </div>
-        <%= f.submit 'save', class: 'ui mini basic green icon button' %>
-        <br><br>
-      <% end %>
-      <div class="text">
-        <%= markdown(c.body) %>
-      </div>
-      <div class="actions">
-        <a class="reply comment">Reply</a>
-        <% if current_user == c. user %>
-        <a class="edit comment">edit</a>
-        <%= link_to 'delete', comment_url(c), method: :delete, 'data-confirm': 'Are you sure?' %>
-        <% end %>
-      </div>
-
-      <%= form_for :comment, url: problem_comments_url(@problem), html: {class: "ui reply form", style: 'display: none'} do |f| %>
-      <div class="required field">
-        <%= f.text_area :body, placeholder: "Your Reply", required: true %>
-      </div>
-      <%= f.text_field :parent_id, value: c.id, hidden: true %>
-      <%= f.submit "Reply", class: "ui red basic mini icon button" %>
-      <% end %>
-    </div>
-
-    <% c.replies.order(created_at: :asc).each do |r| %>
-    <div class="comments">
-      <div class="comment">
-        <a class="avatar">
-          <img src="<%= r.user.picture %>">
-        </a>
-        <div class="content">
-          <a class="author"><%= r.user.full_name %></a>
-          <div class="metadata">
-            <span class="date"><%= time_ago_in_words(r.created_at) %> ago</span>
-            <% if r.liked?(current_user) %>
-              <%= link_to comment_unlike_url(r), title: 'unlike' do %>
-              <i class="red heart icon"></i>
-              <span style="color: #db2828"><%= r.likes %></span>
-            <% end %>
-            <% else %>
-              <%= link_to comment_like_url(r), title: 'like' do %>
-              <i class="grey heart icon"></i>
-              <span style="color: gray"><%= r.likes %></span>
-              <% end %>
-            <% end %>
-          </div>
-          
-          <%= form_for r, html: {class: 'ui edit form' } do |f| %>
-          <div class="field">
-          <%= f.text_area :body, rows: 2 %>
-          </div>
-          <%= f.submit 'save', class: 'ui mini basic green icon button' %>
-          <br><br>
-          <% end %>
-          
-          <div class="text">
-            <%= markdown(r.body) %>
-          </div>
-          <div class="actions">
-            <% if current_user == r. user %>
-            <a class="edit comment">edit</a>
-            <%= link_to 'delete', comment_url(r), method: :delete, 'data-confirm': 'Are you sure?' %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  </div>
-  <% end %>
-
-  <h4 class="ui header">Leave Comment</h4>
-  <%= form_for @problem.comments.new, url: problem_comments_url(@problem), html: {class: "ui comment form"} do |f| %>
-  
-  <div class="required field">
-      <%= f.text_area :body, placeholder: 'Your comment', required: true %>
-  </div>
-    <%= f.submit "Save", class: "ui green basic button" %>
-  <% end %>
-</div>
-</div>
-
+<%= render partial: 'comments/comments', locals: { problem: @problem } %>
 
 <script>
-  <%# $('textarea').each(function() {
-    var simplemde = new SimpleMDE({
-        element: this,
+$( document ).ready(function() {
+  <% if params[:comment_id].present? %>
+    $('html, body').animate({
+      scrollTop: $("#comment-<%= params[:comment_id] %>").offset().top
+    }, 2000, function() {
+      $("#comment-<%= params[:comment_id] %>").transition('glow');
     });
-    simplemde.render(); 
-  });
-
-    $('.fa-eye').click(function(){
-        MathJax.typeset();
-    });
-   $('.editor-preview').on('change',function() {
-     alert();
-     if($(this).text() != '') {
-       alert();
-       $(this).parent().parent().find('.button').prop('diabled', false);
-     }
-  }); %>
+  <% end %> 
+});
 </script>

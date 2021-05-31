@@ -27,4 +27,12 @@ $( document ).on('turbolinks:load',function() {
         }
     });
     
+    $('.ui.tag.selection.dropdown')
+        .dropdown({
+            apiSettings: {
+                url: '/slack_users',
+                filterRemoteData: true
+            }
+        })
+    ;
 });
