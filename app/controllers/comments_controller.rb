@@ -84,13 +84,10 @@ class CommentsController < ApplicationController
                     }
                 },
                 {
-			        type: "divider"
-		        },
-                {
                     type: "section",
                     text: {
                         type: "mrkdwn",
-                        text: "#{comment.body} #{tags}",
+                        text: "> #{comment.body} #{tags}",
 			    }
 		    }
 	        ]
