@@ -3,9 +3,12 @@ class CommentsController < ApplicationController
     before_action :correct_user, only: [:update, :destroy]
 
     def slack_users
-        client = Slack::Web::Client.new
-        @users = client.users_list.members
-
+        #client = Slack::Web::Client.new
+        #workspace_users = client.users_list.members
+        #channel_userIds = client.conversations_members(channel: 'C020SSZH0U8').members
+        #puts channel_userIds
+        # @users = workspace_users.select{ |u| channel_userIds.include?(u.id) }
+        @users = User.all
     end
 
     def like

@@ -31,8 +31,8 @@ $( document ).on('turbolinks:load',function() {
         .dropdown({
             apiSettings: {
                 url: '/slack_users',
-                filterRemoteData: true
-            }
+            },
+            filterRemoteData: true
         })
     ;
 });
