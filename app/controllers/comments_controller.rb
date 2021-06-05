@@ -65,7 +65,8 @@ class CommentsController < ApplicationController
         end
         
         if comment.parent
-            msg = "<@#{comment.parent.user.uid}>: *#{comment.user.full_name}* has posted a <#{url_for comment.problem}?comment_id=#{comment.id}|reply> to a comment."
+            msg = (comment.user == comment.parent.user) ? "" : "<@#{comment.parent.user.uid}>: "
+            msg = msg + "*#{comment.user.full_name}* has posted a <#{url_for comment.problem}?comment_id=#{comment.id}|reply> to a comment."
         else
             msg = "*#{comment.user.full_name}* has posted this <#{url_for comment.problem}?comment_id=#{comment.id}|comment>:"            
         end
