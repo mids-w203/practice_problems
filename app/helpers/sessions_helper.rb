@@ -1,6 +1,9 @@
 module SessionsHelper
     def logged_in_user
-        redirect_to login_url unless logged_in?
+        unless logged_in?
+            session[:redirect_url] = request.original_url
+            redirect_to login_url
+        end 
     end
 
     def instructor_user
@@ -28,4 +31,9 @@ module SessionsHelper
         session.delete(:user_id)
     end
 
+    def redirect_to_or(url)
+        puts session[:redirect_url]
+        redirect_to session[:redirect_url] || url
+        session.delete(:redirect_url)
+    end
 end
