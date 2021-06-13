@@ -72,7 +72,7 @@
     });
 
     var simplemde1 = new SimpleMDE({ 
-        element: document.getElementById("problem_statement")
+        element: document.getElementById("problem_statement"),
         previewRender: function(plainText, preview) { // Async method
             $.ajax({
                 type: 'POST',

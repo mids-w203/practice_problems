@@ -51,9 +51,37 @@
 </div>
 
 <script>
-    var simplemde = new SimpleMDE({ element: document.getElementById("problem_solution") });
-    var simplemde1 = new SimpleMDE({ element: document.getElementById("problem_statement") });
-    $('.fa-eye').click(function(){
-        MathJax.typeset();
-    })
+    var simplemde = new SimpleMDE({ 
+        element: document.getElementById("problem_solution"),
+        previewRender: function(plainText, preview) { // Async method
+            $.ajax({
+                type: 'POST',
+                url: '/preview',
+                data: { text: plainText},
+                dataType: 'html',
+                success: function(response) {
+                    preview.innerHTML=response;
+                    MathJax.typeset();
+                }
+            });
+		    return "Loading...";
+	    },  
+    });
+
+    var simplemde1 = new SimpleMDE({ 
+        element: document.getElementById("problem_statement"),
+        previewRender: function(plainText, preview) { // Async method
+            $.ajax({
+                type: 'POST',
+                url: '/preview',
+                data: { text: plainText},
+                dataType: 'html',
+                success: function(response) {
+                    preview.innerHTML=response;
+                    MathJax.typeset();
+                }
+            });
+		    return "Loading...";
+	    },    
+    });
 </script>
