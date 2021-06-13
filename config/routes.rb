@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     end
   end
   root to: 'pages#index'
+  get 'ping', to: 'pages#ping' 
 end
