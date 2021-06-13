@@ -48,11 +48,28 @@
     <%= f.submit class: "ui blue button" %>
 
 <% end %>
+
+<div class="side-preview"></div>
 </div>
 
 
 <script>
-    var simplemde = new SimpleMDE({ element: document.getElementById("problem_solution") });
+    var simplemde = new SimpleMDE({ 
+        element: document.getElementById("problem_solution"),
+        previewRender: function(plainText, preview) { // Async method
+            $.ajax({
+                type: 'POST',
+                url: '/preview',
+                data: { text: plainText},
+                dataType: 'html',
+                success: function(response) {
+                    preview.innerHTML=response;
+                }
+            });
+		    return "Loading...";
+	    },  
+    });
+
     var simplemde1 = new SimpleMDE({ element: document.getElementById("problem_statement") });
     $('.fa-eye').click(function(){
         MathJax.typeset();
