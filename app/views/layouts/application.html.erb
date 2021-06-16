@@ -57,6 +57,9 @@
           
           <div class="menu">
             <%= link_to logout_url, class: "item" do %>Log out<% end %>
+            <% if current_user.admin? %>
+            <%= link_to users_url, class: "item" do %>Users<% end %>
+            <% end %>
           </div>
         </div>
         <% else %>

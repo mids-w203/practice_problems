@@ -35,4 +35,33 @@ $( document ).on('turbolinks:load',function() {
             filterRemoteData: true
         })
     ;
+
+    // $('.editor-preview-side').remove();
+    // $('a.fa.fa-columns.no-disable.no-mobile').click(function(){
+    //     if($('.side-preview').is(':visible'))
+    //         $('.side-preview').hide();
+    //     else
+    //     $('.side-preview').show();
+    // });
+    // $('a.fa.fa-arrows-alt.no-disable.no-mobile').click(function(){
+    //     if($('.side-preview').is(':visible'))
+    //         $('.side-preview').hide();
+    // });
+    
+    // $('a.fa.fa-eye.no-disable')
+    //     .replaceWith('<a title="Preview (Ctrl-P)" tabindex="-1" class="fa fa-eye preview"></a>')
+    // ;
+
+    // $('a.fa.fa-eye.preview').click(function(){
+    //     var text = $(this).parent().next().find('.CodeMirror-code').text();
+    //     $.ajax({
+    //         url: '/preview',
+    //         data: "text="+text,
+    //         dataType: 'html',
+    //         success: function(response) {
+    //             $('.side-preview').html(response);
+    //         }
+    //     });
+
+    // });
 });

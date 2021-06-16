@@ -1,0 +1,30 @@
+<table class="ui basic table">
+    <thead>
+        <tr>
+            <th>
+                User
+            </th>
+            <th>
+                Instructor?
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |u| %>
+        <tr class="<%= 'positive' if u.instructor? %>">
+            <td><%= u.full_name %></td>
+            <td>
+                <% if u.instructor? %>
+                <%= link_to instructor_user_url(u), class: "ui mini red basic button" do %>
+                    remove
+                <% end %>
+                <% else %>
+                <%= link_to instructor_user_url(u), class: "ui mini green basic button" do %>
+                    add
+                <% end %>    
+                <% end %>    
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

@@ -1,4 +1,8 @@
 module SessionsHelper
+    def admin_user
+        redirect_to root_url unless current_user.admin?
+    end
+
     def logged_in_user
         unless logged_in?
             session[:redirect_url] = request.original_url

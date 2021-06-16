@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get :slack_users, to: 'comments#slack_users'
 
+  resources :users, only: [:index] do
+    member do
+      get 'instructor'
+    end
+  end
+  
   resources :categories, shallow: true do
     resources :topics, shallow: true do
       resources :problems, shallow: true do
