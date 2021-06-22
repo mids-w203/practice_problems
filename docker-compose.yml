@@ -6,9 +6,14 @@ services:
       - postgres
     ports:
       - "3000:3000"
-    command: rails s -b 0.0.0.0
+    command: rails s -b 'ssl://0.0.0.0:3000?key=.ssh/server.key&cert=.ssh/server.crt'
     volumes:
       - '.:/usr/src/app'
+    environment: 
+      SLACK_CLIENT_ID: ''
+      SLACK_CLIENT_SECRET: ''
+      SLACK_API_TOKEN: ''
+      SLACK_CHANNEL: ''
   postgres:
     image: postgres:13
     ports:
