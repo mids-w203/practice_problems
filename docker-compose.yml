@@ -1,3 +1,4 @@
+# https://letsencrypt.org/docs/certificates-for-localhost/
 version: "3.3"
 services:
   app:
@@ -6,7 +7,7 @@ services:
       - postgres
     ports:
       - "3000:3000"
-    command: rails s -b 'ssl://0.0.0.0:3000?key=.ssh/server.key&cert=.ssh/server.crt'
+    command: rails s -b 'ssl://0.0.0.0:3000?key=.ssh/localhost.key&cert=.ssh/localhost.crt'
     volumes:
       - '.:/usr/src/app'
     environment: 

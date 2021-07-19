@@ -21,8 +21,6 @@ ActiveRecord::Schema.define(version: 2021_06_16_171329) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "extra"
-    t.string "permalink"
-    t.index ["permalink"], name: "index_categories_on_permalink", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
