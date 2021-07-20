@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
   end
   
   def new
-    @category = Category.new
+    @category = Category.new(index: (Category.all.pluck(:index).max || 0) + 1)
   end
 
   def update

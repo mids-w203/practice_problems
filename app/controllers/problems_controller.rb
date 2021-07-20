@@ -33,7 +33,7 @@ class ProblemsController < ApplicationController
       
       def new
         @topic = Topic.find(params[:topic_id])
-        @problem = @topic.problems.new
+        @problem = @topic.problems.new(index: (@topic.problems.pluck(:index).max || 0) + 1)
       end
     
       def update

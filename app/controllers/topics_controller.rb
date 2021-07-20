@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
       def new
         @categories = Category.all
         @category = Category.find(params[:category_id])
-        @topic = @category.topics.new
+        @topic = @category.topics.new(index: (@category.topics.pluck(:index).max || 0) + 1)
       end
     
       def update
