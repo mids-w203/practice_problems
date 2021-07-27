@@ -1,4 +1,7 @@
 $( document ).on('turbolinks:load',function() {
+    $('.ui.accordion')
+        .accordion()
+    ;
     $('.ui.dropdown').dropdown();
     $('table').addClass('ui very basic celled centered table');
 
