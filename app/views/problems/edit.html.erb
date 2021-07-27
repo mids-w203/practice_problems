@@ -18,6 +18,22 @@
         </div>
     </div>
     <div class="ui required field">
+        <%= f.label "Level" %>
+        <div class="ui search selection dropdown">
+            <%= f.text_field :level_id, type: 'hidden', value: @problem.level.id %>
+            <i class="dropdown icon"></i>
+            <div class="default text">Level</div>
+            <div class="menu">
+            <% Level.all.each do |l| %>
+                <div class="item" data-value="<%= l.id %>">
+                    <%= l.name %>
+                </div>
+            <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui required field">
         <%= f.label :index %> 
         <%= f.text_field :index, required: true %>
     </div>

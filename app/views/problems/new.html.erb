@@ -1,7 +1,7 @@
 <div class="ui basic segment">
 <h1>Create a problem</h1>
 <%= form_for @problem, url: topic_problems_url(@problem.topic), html: {class: "ui form"} do |f| %>
-<div class="two fields">
+<div class="three fields">
     <div class="ui required field">
         <%= f.label "Topic" %>
         <div class="ui search selection dropdown">
@@ -18,10 +18,24 @@
         </div>
     </div>
     <div class="ui required field">
+        <%= f.label "Level" %>
+        <div class="ui search selection dropdown">
+            <%= f.text_field :level_id, type: 'hidden', value: @problem.level.id %>
+            <i class="dropdown icon"></i>
+            <div class="default text">Level</div>
+            <div class="menu">
+            <% Level.all.each do |l| %>
+                <div class="item" data-value="<%= l.id %>">
+                    <%= l.name %>
+                </div>
+            <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="ui required field">
         <%= f.label :index %> 
         <%= f.text_field :index, required: true %>
     </div>
-
 </div>
 <div class="two fields">
     <div class="ui field">

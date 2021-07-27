@@ -4,6 +4,10 @@
     see <i class="green right chevron icon"></i>
   <% end %>
 
+  <div class="ui basic <%= p.level.color %> label">
+    <%= p.level.name %>
+  </div>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
   <% if p.liked?(current_user) %>
     <%= link_to problem_unlike_url(p), title: 'unlike' do %>
     <i class="red heart icon"></i>

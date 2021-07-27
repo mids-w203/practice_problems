@@ -6,7 +6,8 @@ class Problem < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :user_likes, as: :likable, dependent: :destroy
   has_many :likers, through: :user_likes, source: :user
-
+  belongs_to :level
+  
   def like(user)
     likers << user unless liked?(user)
   end

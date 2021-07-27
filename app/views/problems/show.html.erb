@@ -6,8 +6,12 @@
 <br><br>
 
 <div class="ui raised padded problem segment">
-  <div class="ui red basic label"><%= @problem.topic.title %></div>
-  &nbsp;
+  <div class="ui label"><%= @problem.topic.title %></div>
+  <br><br>
+  <div class="ui basic <%= @problem.level.color %> label">
+    <%= @problem.level.name %>
+  </div>
+  &nbsp;&nbsp;<span style="color: gray">|</span>&nbsp;&nbsp;
   <span style="color: gray">
     <% if @problem.liked?(current_user) %>
       <%= link_to problem_unlike_url(@problem), title: 'unlike' do %>
@@ -45,7 +49,7 @@
   <div class="ui divider"></div>
   <div class="ui accordion">
     <div class="title">
-      <i class="dropdown icon"></i>
+      <i class="red dropdown icon"></i>
       <b>Solution:</b>
     </div>
     <div class="content" style="overflow-x: auto">

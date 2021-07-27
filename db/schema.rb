@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_16_171329) do
+ActiveRecord::Schema.define(version: 2021_07_27_165347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 2021_06_16_171329) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "levels", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_levels_on_name", unique: true
+  end
+
   create_table "problems", force: :cascade do |t|
     t.string "title"
     t.text "statement"
@@ -45,6 +52,8 @@ ActiveRecord::Schema.define(version: 2021_06_16_171329) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "likes"
     t.string "answer"
+    t.bigint "level_id", default: 1, null: false
+    t.index ["level_id"], name: "index_problems_on_level_id"
     t.index ["topic_id"], name: "index_problems_on_topic_id"
   end
 
@@ -85,6 +94,7 @@ ActiveRecord::Schema.define(version: 2021_06_16_171329) do
   add_foreign_key "comments", "comments", column: "parent_id"
   add_foreign_key "comments", "problems"
   add_foreign_key "comments", "users"
+  add_foreign_key "problems", "levels"
   add_foreign_key "problems", "topics"
   add_foreign_key "topics", "categories"
   add_foreign_key "user_likes", "users"

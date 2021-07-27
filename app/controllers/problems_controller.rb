@@ -54,6 +54,6 @@ class ProblemsController < ApplicationController
       private
     
       def problem_params
-        params.require(:problem).permit(:title, :statement, :solution, :index, :topic_id, :answer)
+        params.require(:problem).permit(:title, :statement, :solution, :index, :topic_id, :answer, :level_id)
       end
 end
