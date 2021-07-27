@@ -15,7 +15,6 @@ class SessionsController < ApplicationController
             @user = User.create!(
                 provider: auth_hash.provider,
                 uid: user_info.id,
-                slack_token: token,
                 full_name: user_info.name,
                 email: user_info.email,
                 picture: user_info.image_512
