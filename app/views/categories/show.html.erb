@@ -22,8 +22,17 @@
 <h1 class="ui dividing header"><%= @category.title %></h1>
 
 <% if @category.extra.present? %>
-<div class="ui segment">
-  <%= markdown(@category.extra || '') %>
+<button class="ui green button concepts">Concepts</button>
+<br><br>
+
+<div class="ui concepts modal">
+<i class="close icon"></i>
+  <div class="ui header">
+    Concepts
+  </div>
+  <div class="content">
+    <%= markdown(@category.extra || '') %>
+  </div>
 </div>
 <% end %>
 
