@@ -7,7 +7,21 @@ class Problem < ApplicationRecord
   has_many :user_likes, as: :likable, dependent: :destroy
   has_many :likers, through: :user_likes, source: :user
   belongs_to :level
+  has_many :solved_problems, dependent: :destroy
+  has_many :solvers, through: :solved_problems, source: :user
+
+  def solve(user)
+    solvers << user unless solved?(user)
+  end
+
+  def unsolve(user)
+    solvers.delete(user) if solved?(user)
+  end
   
+  def solved?(user)
+    solvers.include? user
+  end
+
   def like(user)
     likers << user unless liked?(user)
   end

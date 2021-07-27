@@ -23,10 +23,17 @@
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <i class="chat icon"></i>
   <%= p.comments.size %>
-  <% unless p.solution.empty? %>
   &nbsp;&nbsp;|&nbsp;&nbsp;
-  <i class="green inverted check icon"></i>
-  Solved
+  <% if p.solved?(current_user) %>
+    <%= link_to problem_unsolve_url(p), title: 'mark as unsolved' do %>
+    <i class="green inverted check icon"></i>
+    <span style="color: gray">Solved</span>
+    <% end %>
+  <% else %>
+    <%= link_to problem_solve_url(p), title: 'mark as solved' do %>
+    <i class="grey circle icon"></i>
+    <span style="color: gray">Unsolved</span>
+    <% end %>
   <% end %>
 </div>      
 <br>

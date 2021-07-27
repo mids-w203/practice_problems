@@ -28,6 +28,20 @@
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <i class="chat icon"></i>
       <%= @problem.comments.size %>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <% if @problem.solved?(current_user) %>
+      <%= link_to problem_unsolve_url(@problem), title: 'mark as unsolved' do %>
+      <i class="green inverted check icon"></i>
+    <span style="color: gray">Solved</span>
+    <% end %>
+    <% else %>
+    <%= link_to problem_solve_url(@problem), title: 'mark as solved' do %>
+    <i class="grey circle icon"></i>
+    <span style="color: gray">Unsolved</span>
+    <% end %>
+    <% end %>
+
+
       <% if current_user.instructor? %>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <%= link_to problem_url(@problem), method: :delete, 'data-confirm': "Are you sure?" do %>

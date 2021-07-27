@@ -20,6 +20,8 @@ Rails.application.routes.draw do
         end
         get 'like'
         get 'unlike'
+        get 'solve'
+        get 'unsolve'
       end
     end
   end
