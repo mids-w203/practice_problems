@@ -13,8 +13,13 @@
     </div>
     <% end %>
     #<%= t.title %>
-</h3>  
-<% t.problems.each do |p| %>
+</h3>
+<%
+    problems = params[:scope] == '1' ? current_user.solved.where(topic: t) : t.problems
+    level = params[:level].presence || [1,2,3]
+    
+%>
+<% problems.where(level_id: level).each do |p| %>
     <%= render partial: 'problems/problem', locals: {p: p} %>
 <% end %>
   

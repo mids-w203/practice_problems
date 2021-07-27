@@ -20,11 +20,35 @@
 <br><br>
 
 <h1 class="ui dividing header"><%= @category.title %></h1>
+
 <% if @category.extra.present? %>
 <div class="ui segment">
   <%= markdown(@category.extra || '') %>
 </div>
 <% end %>
+
+<% params.permit(:scope, :level) %>
+<div class="ui selection dropdown">
+  <input type="hidden" name="filter" value="<%= params[:scope] %>">
+  <i class="dropdown icon"></i>
+  <div class="default text">Filter</div>
+  <div class="menu">
+    <%= link_to "All", params.merge(scope: nil).permit!, class: "item", 'data-value': "" %>
+    <%= link_to "Solved", params.merge(scope: 1).permit!, class: "item", 'data-value': "1" %>
+  </div>
+</div>
+
+<div class="ui selection dropdown">
+  <input type="hidden" name="filter" value="<%= params[:level] %>">
+  <i class="dropdown icon"></i>
+  <div class="default text">Level</div>
+  <div class="menu">
+    <%= link_to "All", params.merge(level: nil).permit!, class: "item", 'data-value': "" %>
+    <%= link_to "Easy", params.merge(level: 1).permit!, class: "item", 'data-value': "1" %>
+    <%= link_to "Moderate", params.merge(level: 2).permit!, class: "item", 'data-value': "2" %>
+    <%= link_to "Hard", params.merge(level: 3).permit!, class: "item", 'data-value': "3" %>
+  </div>
+</div>
 
 <% @category.topics.each do |t| %>
 <%= render partial: 'topics/topic', locals: {t: t } %>
