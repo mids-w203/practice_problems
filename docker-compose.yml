@@ -11,10 +11,10 @@ services:
     volumes:
       - '.:/usr/src/app'
     environment: 
-      SLACK_CLIENT_ID: ''
-      SLACK_CLIENT_SECRET: ''
-      SLACK_API_TOKEN: ''
-      SLACK_CHANNEL: ''
+      SLACK_CLIENT_ID: '30345778662.2088722775748'
+      SLACK_CLIENT_SECRET: '1e33ff3e802885d0e514d6b1cc2ab561'
+      SLACK_API_TOKEN: 'xoxb-30345778662-2139763065650-eXQKgHuWY86xrv0jRKo8xpNw'
+      SLACK_CHANNEL: 'C023GE5M47L'
   postgres:
     image: postgres:13
     ports:
