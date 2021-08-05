@@ -44,6 +44,7 @@
   <div class="menu">
     <%= link_to "All", params.merge(scope: nil).permit!, class: "item", 'data-value': "" %>
     <%= link_to "Solved", params.merge(scope: 1).permit!, class: "item", 'data-value': "1" %>
+    <%= link_to "Unsolved", params.merge(scope: 2).permit!, class: "item", 'data-value': "2" %>
   </div>
 </div>
 

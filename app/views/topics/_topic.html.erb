@@ -15,9 +15,14 @@
     #<%= t.title %>
 </h3>
 <%
-    problems = params[:scope] == '1' ? current_user.solved.where(topic: t) : t.problems
+    problems = t.problems
+    if(params[:scope] == '1')
+        problems = problems.joins(:solved_problems).where("solved_problems.user": current_user)
+    elsif(params[:scope] == '2')
+        problems = problems.left_outer_joins(:solved_problems).where("solved_problems.user": !current_user || nil)
+        puts problems.size()
+    end
     level = params[:level].presence || [1,2,3]
-    
 %>
 <% problems.where(level_id: level).each do |p| %>
     <%= render partial: 'problems/problem', locals: {p: p} %>
