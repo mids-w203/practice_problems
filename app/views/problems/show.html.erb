@@ -57,7 +57,17 @@
   <% if @problem.title.present? %><h4 class="ui header">(<%= @problem.title %>)</h4><% end %>
   <%= markdown(@problem.statement) %>
   
-  <% if @problem.answer.present? %><h4 class="ui red header">Answer: <%= @problem.answer %></h4><% end %>
+  <% if @problem.answer.present? %>
+    <div class="ui accordion">
+      <div class="title">
+        <i class="red dropdown icon"></i>
+        <b>Answer:</b>
+      </div>
+      <div class="content" style="overflow-x: auto">
+        <%= markdown(@problem.answer) %>
+      </div>
+    </div>
+  <% end %>
 
   <% if @problem.solution.present? %>
   <div class="ui divider"></div>
