@@ -11,8 +11,15 @@ layout: home
 {% endfor %}
 {% assign grouped_problems = cat_problems | sort: 'topic' | group_by: 'topic' %}
 
+<div class="ui large breadcrumb">
+  <a href="/" class="section"><i class="large black home icon"></i><a>
+  <span class="divider">/</span>
+  <div class="active section">{{ page.title }}</div>
+</div>
+<br><br>
 
-<h1 class="ui center aligned header">{{ page.title }}</h1>
+<h1 class="ui dividing header">{{ page.title }}</h1>
+
 {% for group in grouped_problems %}
 {% assign idx = group.name | plus: 0 %}
 {% if page.topics[idx] and page.topics[idx] != '' %}
