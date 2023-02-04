@@ -3,8 +3,6 @@ number: 1
 topics: ['Probability Space', 'Statistical Independence']
 refs: [eps]
 ---
-<h2 class="ui dividing header">Concepts</h2>
-
 | Concept                 | Example                   | Page Number | 
 |-------------------------|---------------------------|-------------|
 | Probability Spaces      | 1.1: Dice Rolling         | 1           |
