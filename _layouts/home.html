@@ -1,9 +1,47 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Practice Problems</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">  
+  <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  <script src="{{ site.baseurl }}/js/script.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+    </script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
 </head>
 <body>
+  <div class="ui container basic segment">
+    <div class="ui text menu">
+      <a class="header item" href="{{ site.baseurl }}"><i class="big home icon"></i></a>
+      <h3 class="item">
+        w203: Practice Problems
+      </h3>
 
-</body>
-</html>
+      <div class="right menu">
+        <div class="ui dropdown item">
+          Categories
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            {% for category in site.categories %}
+            <a href="{{ category.url | prepend: site.baseurl }}" class="item">{{ category.title }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        <a class="item" href="https://github.com/mids-w203/practice_problems/">
+          <i class="ui black big github icon"></i>
+      </a>
+      </div>
+    </div>
+  </div>
