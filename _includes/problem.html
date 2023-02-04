@@ -1,39 +1,15 @@
-<div class="ui raised segment" id="prob-{{problem.title}}"> 
-    <div class="title">
-        {% if problem.content != '' %}
-        <button class="ui icon green small right floated button">
-            Solution
-            <i class="dropdown icon"></i>
-        </button>
-        {% endif %}
-        <b>Problem {{problem.title}}: 
-            {% if problem.caption and problem.caption != '' %}
+<div class="ui raised clearing segment" id="prob-{{problem.index}}">
+    
+    <a class="ui blue basic right floated icon mini button" href="">solution <i class="right chevron icon"></i></a>
+
+    <a href="{{ problem.url }}">
+    <div style="font-size: 16px;color: black;">
+        <b>Problem {{problem.index}} 
+            {% if problem.caption and problem.caption != "" %}
             ({{ problem.caption }})
-            {% endif %}
+            {% endif %}:
         </b>
-        {% for ref in site.references %}
-        {% if ref.title == problem.ref %}
-        <a class="ui small icon basic button" href="#ref-{{ref.title}}">
-        {{ problem.tag }} 
-        | {{ref.title | upcase }}<i class="ui blue down arrow icon"></i>
-        </a>
-        {% endif %}
-        {% endfor %}
-        
-        <br><br>
         {{ problem.statement | markdownify }}
     </div>  
-    <div class="{% if jekyll.environment=='development' %}active{% endif %} content"
-      style="padding-bottom: 30px;overflow-y: auto;">
-        {% if problem.content != '' %}
-        <h3 class="ui dividing green header">Solution:</h3>
-          {{ problem.content | markdownify }}
-        {% endif %}
-        
-        {% if problem.answer and problem.answer != '' %}
-        <div class="ui large  bottom right attached label">
-            Answer: {{problem.answer }} 
-        </div>
-        {% endif %}
-    </div>
+    </a>
 </div>

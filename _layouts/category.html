@@ -64,9 +64,9 @@ href="#Miscellaneous">
     
     <div id="{{ name | split: ' ' | join: '-' }}" style="margin-top: 15px;">
       <a href="#{{ name | split: ' ' | join: '-' }}"> 
-        <div class="ui red header">
-          # {{ name }}
-        </div>  
+        <h3 class="ui dividing red header">
+          #{{ name }}
+        </h3>  
       </a>
       {% for problem in problems %}
       {% include problem.html problem=problem %}
