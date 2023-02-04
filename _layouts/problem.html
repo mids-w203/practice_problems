@@ -1,0 +1,57 @@
+---
+layout: home
+---
+{% assign folder = page.path | split: '/' | shift | first %}
+{% assign category = site.categories[folder] %}
+{{ folder }}
+{{ site.categories['unit-01'] }}
+
+<div class="ui large breadcrumb">
+    <a href="{{ page.category }}" class="section">
+        <i class=" left chevron icon"></i>
+        {{ page.path }}
+    </a>
+    <span class="divider">/</span>
+    <div class="active section">Problem {{ page.index }}:</div>
+</div>
+<br><br>
+
+<div class="ui raised padded problem segment">
+    <div class="ui label">{{ page.topic.title }}</div>
+    <br><br>
+    <div class="ui basic <%= @problem.level.color %> label">
+      {{ page.level }}
+    </div>
+    <br><br>
+    
+    {% if page.caption != "" %}
+    <h4 class="ui header">({{ page.caption }})</h4>
+    {% endif %}
+    
+    {{ page.statement | markdownify }}
+    
+    {% if page.answer != "" %}
+      <div class="ui accordion">
+        <div class="title">
+          <i class="red dropdown icon"></i>
+          <b>Answer:</b>
+        </div>
+        <div class="content" style="overflow-x: auto">
+          {{ page.answer | markdownify }}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if page.content != "" %}
+    <div class="ui divider"></div>
+    <div class="ui accordion">
+      <div class="title">
+        <i class="red dropdown icon"></i>
+        <b>Solution:</b>
+      </div>
+      <div class="content" style="overflow-x: auto">
+        {{ content | markdownify }}
+      </div>
+    </div>
+    {% endif %}
+  </div>

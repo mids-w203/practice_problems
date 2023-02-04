@@ -1,9 +1,7 @@
 $( document ).ready(function() {
-    $('.ui.accordion').accordion({
-        selector: {
-            trigger: '.title button'
-        }
-    });
+    $('.ui.accordion')
+    .accordion()
+    ;
     $('.concepts.button').click(function(){
         $('.ui.concepts.modal')
          .modal('show')

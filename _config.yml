@@ -1,7 +1,7 @@
 title: Practice Problems
 email: smajhi@berkeley.edu
 baseurl: "/practice_problems"
-url: "https://mids-w203.github.io"
+url: "https://mids-w203.github.io/practice_problems"
 github_username:  sushovan4
 
 # Build settings
@@ -15,6 +15,7 @@ collections:
     sort_by: number
   problems:
     output: true
+    
   references:
   
 defaults:
@@ -29,4 +30,4 @@ defaults:
       path: ""
       type: "problems"
     values:
-      topic: 1000
+      layout: problem
