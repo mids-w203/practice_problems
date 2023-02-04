@@ -20,6 +20,21 @@ layout: home
 
 <h1 class="ui dividing header">{{ page.title }}</h1>
 
+{% if content != "" %}
+<button class="ui green button concepts right floated">Concepts</button>
+<br><br>
+
+<div class="ui concepts modal">
+<i class="close icon"></i>
+  <div class="ui header">
+    Concepts
+  </div>
+  <div class="content">
+    {{ content | markdownify }}
+  </div>
+</div>
+{% endif %}
+
 {% for group in grouped_problems %}
 {% assign idx = group.name | plus: 0 %}
 {% if page.topics[idx] and page.topics[idx] != '' %}
@@ -37,11 +52,6 @@ href="#Miscellaneous">
 {% endfor %}
 
 <div class="ui basic segment">
-  {{ content }}
-</div>
-
-<div class="ui basic segment">
-  
   <div class="ui accordion">  
     {% for group in grouped_problems %}
     {% assign problems = group.items | sort: 'title' %}
