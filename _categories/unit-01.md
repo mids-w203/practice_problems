@@ -1,5 +1,5 @@
 ---
-title: unit-01
+title: Unit 01
 number: 1
 topics: ['Probability Space', 'Statistical Independence']
 refs: [eps]

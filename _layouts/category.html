@@ -75,19 +75,3 @@ href="#Miscellaneous">
     {% endfor %}
   </div>
 </div>
-
-<div class="ui basic segment">
-  <h3 class="ui dividing header">References</h3>
-  {% assign used_refs = cat_problems | map: 'ref' | uniq %}
-  {% for ref in site.references %}
-  {% for ref1 in used_refs %}
-  {% if ref.title == ref1 %}
-  <div class="ui vertical segment" id="ref-{{ref.title}}">
-    [<b>{{ ref.title | upcase }}</b>] 
-    {{ref | markdownify | remove: "<p>" | remove: "</p>" }}
-    &nbsp;(<a href="{{ ref.link }}">link</a>)
-  </div>
-  {% endif %}
-  {% endfor %}
-  {% endfor %}
-</div>

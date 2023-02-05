@@ -15,9 +15,9 @@ collections:
     sort_by: number
   problems:
     output: true
-    
-  references:
-  
+  levels:
+    output: false
+
 defaults:
   -
     scope:
@@ -31,3 +31,4 @@ defaults:
       type: "problems"
     values:
       layout: problem
+      level: 0

@@ -2,9 +2,8 @@
 layout: home
 ---
 {% assign folder = page.path | split: '/' | shift | first %}
-{% assign category = site.categories[folder] %}
-{{ folder }}
-{{ site.categories['unit-01'] }}
+{% assign category = site.categories | where: 'title', folder %}
+{{ site.categories[0].path }}
 
 <div class="ui large breadcrumb">
     <a href="{{ page.category }}" class="section">
@@ -17,10 +16,11 @@ layout: home
 <br><br>
 
 <div class="ui raised padded problem segment">
-    <div class="ui label">{{ page.topic.title }}</div>
+  {% assign l = page.level | to_i %}
+  <div class="ui label">{{ page.topic.title }}</div>
     <br><br>
-    <div class="ui basic <%= @problem.level.color %> label">
-      {{ page.level }}
+    <div class="ui basic {{ site.levels[l].color }} label">
+      {{ site.levels[l].name }}
     </div>
     <br><br>
     
