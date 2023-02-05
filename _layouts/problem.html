@@ -1,14 +1,18 @@
 ---
 layout: home
 ---
-{% assign folder = page.path | split: '/' | shift | first %}
-{% assign category = site.categories | where: 'title', folder %}
-{{ site.categories[0].path }}
+{% assign directory = page.path | split: '/' | shift | first %}
+{% for category in site.categories %}
+{% assign title = category.title | downcase | split: ' ' | join: '-' %}
+{% if title == directory %}
+{% assign cat = category %}
+{% endif %}
+{% endfor %}
 
 <div class="ui large breadcrumb">
-    <a href="{{ page.category }}" class="section">
+    <a href="{{ site.baseurl }}{{ cat.url }}" class="section">
         <i class=" left chevron icon"></i>
-        {{ page.path }}
+        {{ cat.title }}
     </a>
     <span class="divider">/</span>
     <div class="active section">Problem {{ page.index }}:</div>
@@ -17,7 +21,7 @@ layout: home
 
 <div class="ui raised padded problem segment">
   {% assign l = page.level | to_i %}
-  <div class="ui label">{{ page.topic.title }}</div>
+  <div class="ui label">{{ cat.topics[page.topic] }}</div>
     <br><br>
     <div class="ui basic {{ site.levels[l].color }} label">
       {{ site.levels[l].name }}
