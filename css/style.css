@@ -19,3 +19,11 @@ html, body {
 .problem.segment p {
     font-size: 18px;
 }
+
+.giscus, .giscus-frame {
+    width: 100%;
+  }
+  
+  .giscus-frame {
+    border: none;
+}
