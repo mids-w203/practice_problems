@@ -12,7 +12,7 @@ layout: home
 {% assign grouped_problems = cat_problems | sort: 'topic' | group_by: 'topic' %}
 
 <div class="ui large breadcrumb">
-  <a href="/" class="section"><i class="large black home icon"></i><a>
+  <a href="{{ site.baseurl }}" class="section"><i class="large black home icon"></i><a>
   <span class="divider">/</span>
   <div class="active section">{{ page.title }}</div>
 </div>
