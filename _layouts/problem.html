@@ -15,7 +15,7 @@ layout: home
         {{ cat.title }}
     </a>
     <span class="divider">/</span>
-    <div class="active section">Problem {{ page.index }}:</div>
+    <div class="active section">Problem {{ page.title }}:</div>
 </div>
 <br><br>
 
@@ -28,7 +28,7 @@ layout: home
     </div>
     <br><br>
     
-    {% if page.caption != "" %}
+    {% if page.caption %}
     <h4 class="ui header">({{ page.caption }})</h4>
     {% endif %}
     

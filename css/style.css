@@ -1,20 +1,13 @@
 html, body {
     margin: 0;
     padding: 0;
+    font-size: 16px;
 }
 
 .ui.accordion .title {
     cursor: inherit;
 }
 
-.ui.segment {
-    font-size: 16px!important;
-}
-
-.CodeMirror, .CodeMirror-scroll {
-	min-height: 100px;
-    font-size: 1.1em;
-}
 
 .problem.segment p {
     font-size: 18px;

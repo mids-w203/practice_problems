@@ -1,13 +1,13 @@
 <div class="ui raised clearing segment" id="prob-{{problem.index}}">
     
     <a class="ui blue basic right floated icon mini button" href="">solution <i class="right chevron icon"></i></a>
-
+    <div class="ui small basic {{ site.levels[problem.level].color }} label">{{ site.levels[problem.level].name }}</div>
     <a href="{{ site.baseurl }}{{ problem.url }}">
     <div style="font-size: 16px;color: black;">
-        <b>Problem {{problem.index}} 
+        <b>Problem {{problem.title}}:
             {% if problem.caption and problem.caption != "" %}
             ({{ problem.caption }})
-            {% endif %}:
+            {% endif %}
         </b>
         {{ problem.statement | markdownify }}
     </div>  
