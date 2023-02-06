@@ -4,6 +4,19 @@ baseurl: "/practice_problems"
 url: "https://mids-w203.github.io/practice_problems"
 github_username:  sushovan4
 
+comments:
+  provider:            giscus
+
+giscus:
+  repo:                "mids-w203/practice_problems"
+  repo-id:             "MDEwOlJlcG9zaXRvcnkzMjIzNjQwMDk="
+  category:            "General"
+  category-id:         "DIC_kwDOEzbiac4CUBQk"
+  mapping:             "pathname"
+  reaction-enabled:    "1"
+  theme:               "light"
+  crossorigin:         "anonymous"
+
 # Build settings
 theme: minima
 plugins:
