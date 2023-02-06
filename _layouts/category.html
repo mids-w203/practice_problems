@@ -11,6 +11,11 @@ layout: home
 {% endfor %}
 {% assign grouped_problems = cat_problems | sort: 'topic' | group_by: 'topic' %}
 
+<a class="ui right floated blue mini button" 
+href="https://github.com/mids-w203/practice_problems/new/gh-pages/_problems/{{ directory }}">
+Add Problem
+</a>
+
 <div class="ui large breadcrumb">
   <a href="{{ site.baseurl }}" class="section"><i class="large black home icon"></i><a>
   <span class="divider">/</span>
