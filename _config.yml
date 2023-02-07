@@ -25,9 +25,10 @@ plugins:
 collections:
   categories:
     output: true
-    sort_by: number
+    sort_by: index
   problems:
     output: true
+    sort_by: title
   levels:
     output: false
 
@@ -45,3 +46,4 @@ defaults:
     values:
       layout: problem
       level: 0
+      tag: Miscellaneous

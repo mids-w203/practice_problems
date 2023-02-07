@@ -1,8 +1,6 @@
 ---
 title: Unit 01
-number: 1
-topics: ['Probability Space', 'Statistical Independence']
-refs: [eps]
+index: 1
 ---
 | Concept                 | Example                   | Page Number | 
 |-------------------------|---------------------------|-------------|

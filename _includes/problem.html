@@ -1,7 +1,5 @@
 <div class="ui raised clearing segment" id="prob-{{problem.index}}">
-    
-    <a class="ui blue basic right floated icon mini button" href="">solution <i class="right chevron icon"></i></a>
-    <div class="ui small basic {{ site.levels[problem.level].color }} label">{{ site.levels[problem.level].name }}</div>
+    <a class="ui top right attached {{ site.levels[problem.level].color }}  label">{{ site.levels[problem.level].name }}</a>
     <a href="{{ site.baseurl }}{{ problem.url }}">
     <div style="font-size: 16px;color: black;">
         <b>Problem {{problem.title}}:
@@ -12,4 +10,7 @@
         {{ problem.statement | markdownify }}
     </div>  
     </a>
+    <br/>
+    <div class="ui small label">#{{ problem.tag }}</div>
+    <a class="ui blue basic right floated icon mini button" href="">Solution <i class="right chevron icon"></i></a>
 </div>

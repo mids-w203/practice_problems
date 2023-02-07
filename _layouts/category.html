@@ -9,7 +9,6 @@ layout: home
 {% assign cat_problems = cat_problems | push: problem %}
 {% endif %}
 {% endfor %}
-{% assign grouped_problems = cat_problems | sort: 'topic' | group_by: 'topic' %}
 
 <a class="ui right floated blue mini button" 
 href="https://github.com/mids-w203/practice_problems/new/gh-pages/_problems/{{ directory }}">
@@ -40,43 +39,8 @@ Add Problem
 </div>
 {% endif %}
 
-{% for group in grouped_problems %}
-{% assign idx = group.name | plus: 0 %}
-{% if page.topics[idx] and page.topics[idx] != '' %}
-<a style="margin:3px" class="ui basic red icon small button" 
-href="#{{ page.topics[idx] | split: ' ' | join: '-' }}">
-  #{{ page.topics[idx] }}
-</a>
-{% else %}
-<a style="margin:3px" class="ui basic red icon small button" 
-href="#Miscellaneous">
-  #Miscellaneous
-</a>
-{% endif %}
-
-{% endfor %}
-
 <div class="ui basic segment">
-  <div class="ui accordion">  
-    {% for group in grouped_problems %}
-    {% assign problems = group.items | sort: 'title' %}
-    {% assign idx = group.name | plus: 0 %}
-    {% if page.topics[idx] and page.topics[idx] != '' %}
-    {% assign name = page.topics[idx]  %}
-    {% else %}
-    {% assign name = 'Miscellaneous' %}
-    {% endif %}
-    
-    <div id="{{ name | split: ' ' | join: '-' }}" style="margin-top: 15px;">
-      <a href="#{{ name | split: ' ' | join: '-' }}"> 
-        <h3 class="ui dividing red header">
-          #{{ name }}
-        </h3>  
-      </a>
-      {% for problem in problems %}
-      {% include problem.html problem=problem %}
-      {% endfor %}
-    </div>
-    {% endfor %}
-  </div>
+  {% for problem in cat_problems %}
+  {% include problem.html problem=problem %}
+  {% endfor %}
 </div>
