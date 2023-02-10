@@ -25,7 +25,7 @@ href="https://github.com/mids-w203/practice_problems/edit/gh-pages/{{ page.path 
 
 <div class="ui raised padded problem segment">
   {% assign l = page.level | to_i %}
-  <div class="ui label">#{{ page.tag }}</div>
+  <div class="ui label">#{{ page.path | split: "/" | shift: 2 | first }}</div>
     <br><br>
     <div class="ui basic {{ site.levels[l].color }} label">
       {{ site.levels[l].name }}

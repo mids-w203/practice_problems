@@ -5,9 +5,18 @@ layout: home
 {% assign cat_problems = "" | split: ',' %}
 {% for problem in site.problems %}
 {% assign path = problem.path | split: "/" %}
-{% if path[1] == directory %}
+{% assign problem_dir = path[1] %}
+{% if problem_dir == directory %}
 {% assign cat_problems = cat_problems | push: problem %}
 {% endif %}
+{% endfor %}
+
+{% assign cat_problems = cat_problems | sort: 'title' %}
+
+{% assign cat_topics = "" | split: ',' %}
+{% for problem in cat_problems %}
+{% assign topic = problem.path | split: "/" %}
+{% assign cat_topics = cat_topics | push: topic[2] | uniq %}
 {% endfor %}
 
 <a class="ui right floated blue mini button" 
@@ -40,7 +49,23 @@ Add Problem
 {% endif %}
 
 <div class="ui basic segment">
-  {% for problem in cat_problems %}
-  {% include problem.html problem=problem %}
+  <div class="ui horizontal divider">Topics</div>
+  {% for topic in cat_topics %}
+  <a class="ui red basic label" href="#{{ topic }}">#{{ topic }}</a>
   {% endfor %}
+
+  <div class="ui horizontal divider">Problems</div>
+  {% for topic in cat_topics %}
+  <div class="ui red dividing header" id="{{ topic }}">#{{ topic }}</div>
+
+  {% for problem in cat_problems %}
+  {% assign t =  problem.path | split: "/" %}
+  {% if t[2] == topic %}
+  {% include problem.html problem=problem %}
+  {% endif %}
+  {% endfor %}
+
+  {% endfor %}
+  
+  
 </div>

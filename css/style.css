@@ -1,7 +1,17 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-size: 16px;
+    font-size: 15px;
+    font-family: 'Alegreya', serif;
+    font-family: 'Alegreya SC', serif;
+    font-family: 'Merriweather', serif;
+}
+
+.ui.segment, p, h1, h2, h3, h4, .ui.menu, .ui.button, 
+.ui.accordion .title  {
+    font-family: 'Alegreya', serif!important;
+    font-family: 'Alegreya SC', serif!important;
+    font-family: 'Merriweather', serif!important;
 }
 
 .ui.accordion .title {
@@ -15,8 +25,11 @@ html, body {
 
 .giscus, .giscus-frame {
     width: 100%;
-  }
-  
-  .giscus-frame {
+    font-family: 'Alegreya', serif!important;
+    font-family: 'Alegreya SC', serif!important;
+    font-family: 'Merriweather', serif!important;
+}
+
+.giscus-frame {
     border: none;
 }
