@@ -46,8 +46,9 @@ Add Problem
 </div>
 {% endif %}
 
+{% for p in cat_problems %}{{ p.title }}{% endfor %}
 {% assign cat_problems = cat_problems | sort: "title" %}
-{{ cat_problems }}
+{% for p in cat_problems %}{{ p.title }}{% endfor %}
 <div class="ui basic segment">
   <div class="ui horizontal divider">Topics</div>
   {% for topic in cat_topics %}
