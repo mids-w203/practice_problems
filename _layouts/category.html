@@ -11,8 +11,6 @@ layout: home
 {% endif %}
 {% endfor %}
 
-{% assign cat_problems = cat_problems | sort: 'title' %}
-
 {% assign cat_topics = "" | split: ',' %}
 {% for problem in cat_problems %}
 {% assign topic = problem.path | split: "/" %}
@@ -48,6 +46,7 @@ Add Problem
 </div>
 {% endif %}
 
+{% assign cat_problems = cat_problems | sort: "title" %}
 <div class="ui basic segment">
   <div class="ui horizontal divider">Topics</div>
   {% for topic in cat_topics %}
