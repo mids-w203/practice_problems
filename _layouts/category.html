@@ -2,19 +2,19 @@
 layout: home
 ---
 {% assign directory = page.title | downcase | split: " " | join: "-"  %}
+{% assign cat_topics = "" | split: ',' %}
 {% assign cat_problems = "" | split: ',' %}
 {% for problem in site.problems %}
-{% assign path = problem.path | split: "/" %}
-{% assign problem_dir = path[1] %}
-{% if problem_dir == directory %}
-{% assign cat_problems = cat_problems | push: problem %}
-{% endif %}
-{% endfor %}
+  {% assign path = problem.path | split: "/" %}
+  {% if path[1] == directory %}
+    {% assign cat_problems = cat_problems | push: problem %}
 
-{% assign cat_topics = "" | split: ',' %}
-{% for problem in cat_problems %}
-{% assign topic = problem.path | split: "/" %}
-{% assign cat_topics = cat_topics | push: topic[2] | uniq %}
+    {% if path.size == 3 %}
+      {% assign cat_topics = cat_topics | push: 'miscellaneous' %}
+    {% else if path.size == 4 %}
+    {% assign cat_topics = cat_topics | push: path[2] | uniq %}
+    {% endif %}
+  {% endif %}
 {% endfor %}
 
 <a class="ui right floated blue mini button" 
@@ -50,21 +50,22 @@ Add Problem
 <div class="ui basic segment">
   <div class="ui horizontal divider">Topics</div>
   {% for topic in cat_topics %}
-  <a class="ui red basic label" href="#{{ topic }}">#{{ topic }}</a>
+  <a style="margin: 3px;text-transform: capitalize;" class="ui red basic label" href="#{{ topic }}">#{{ topic | split: "-" | join: " " }}</a>
   {% endfor %}
 
   <div class="ui horizontal divider">Problems</div>
   {% for topic in cat_topics %}
-  <div class="ui red dividing header" id="{{ topic }}">#{{ topic }}</div>
+  <div style="text-transform: capitalize;" class="ui red dividing header" id="{{ topic }}"># {{ topic  | split: "-" | join: " " }}</div>
 
   {% for problem in cat_problems %}
-  {% assign t =  problem.path | split: "/" %}
-  {% if t[2] == topic %}
+  {% assign path =  problem.path | split: "/" %}
+
+  {% if topic != 'miscellaneous' and path.size == 4 and path[2] == topic %}
+    {% include problem.html problem=problem %}
+  {% elsif topic == 'miscellaneous' and path.size == 3  %}
   {% include problem.html problem=problem %}
   {% endif %}
   {% endfor %}
 
   {% endfor %}
-  
-  
 </div>
