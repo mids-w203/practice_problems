@@ -2,7 +2,7 @@
     <a class="ui top right attached {{ site.levels[problem.level].color }} mini label">{{ site.levels[problem.level].name }}</a>
     <a href="{{ site.baseurl }}{{ problem.url }}">
     <div style="font-size: 16px;color: black;">
-        <b>Problem {{problem.title}}:
+        <b>Problem {{problem.index}}:
             {% if problem.caption and problem.caption != "" %}
             ({{ problem.caption }})
             {% endif %}
