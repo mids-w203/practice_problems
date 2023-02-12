@@ -28,7 +28,7 @@ collections:
     sort_by: index
   problems:
     output: true
-    sort_by: title
+    sort_by: index
   levels:
     output: false
 
@@ -46,3 +46,4 @@ defaults:
     values:
       layout: problem
       level: 0
+      index: 1000
