@@ -38,7 +38,7 @@ href="https://github.com/mids-w203/practice_problems/edit/gh-pages/{{ page.path 
     
     {{ page.statement | markdownify }}
     
-    {% if page.answer != "" %}
+    {% if page.answer and page.answer != "" %}
       <div class="ui accordion">
         <div class="title">
           <i class="red dropdown icon"></i>
@@ -50,7 +50,8 @@ href="https://github.com/mids-w203/practice_problems/edit/gh-pages/{{ page.path 
       </div>
     {% endif %}
 
-    {% if page.content != "" %}
+    {% assign content = page.content | strip_newlines %}
+    {% if content and content != "" %}
     <div class="ui divider"></div>
     <div class="ui accordion">
       <div class="title">
