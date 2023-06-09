@@ -1,7 +1,7 @@
 <div class="ui raised clearing segment" id="prob-{{problem.index}}">
     <a class="ui top right attached {{ site.levels[problem.level].color }} mini label">{{ site.levels[problem.level].name }}</a>
     <a href="{{ site.baseurl }}{{ problem.url }}">
-    <div style="font-size: 16px;color: black;">
+    <div style="font-size: 16px;color: black; overflow-x: auto">
         <b>Problem {{problem.index}}:
             {% if problem.caption and problem.caption != "" %}
             ({{ problem.caption }})
