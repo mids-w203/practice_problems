@@ -3,7 +3,7 @@ email: smajhi@berkeley.edu
 baseurl: "/practice_problems"
 url: "https://mids-w203.github.io/practice_problems"
 github_username:  sushovan4
-markdown: CommonMark
+markdown: GFM
 commonmark:
   options: ["SMART", "FOOTNOTES", "UNSAFE"]
   extensions: ["strikethrough", "autolink", "table"]
