@@ -36,7 +36,7 @@ href="https://github.com/mids-w203/practice_problems/edit/master/{{ page.path }}
     <h4 class="ui header">({{ page.caption }})</h4>
     {% endif %}
     
-    <div style="overflow-x:auto">{{ page.statement | markdownify }}</div>
+    <div style="overflow-x:auto;margin-bottom: 15px">{{ page.statement | markdownify }}</div>
     
     {% if page.answer and page.answer != "" %}
       <div class="ui accordion">
