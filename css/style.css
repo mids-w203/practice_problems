@@ -9,7 +9,7 @@ html, body {
 }
 
 
-.problem.segment p, .problem.segment ul, .problem.segment ol {
+.ui.problem.segment p, .ui.problem.segment ul, .ui.problem.segment ol {
     font-size: 18px!important;
 }
 
