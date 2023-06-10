@@ -5,7 +5,7 @@ url: "https://mids-w203.github.io/practice_problems"
 github_username:  sushovan4
 markdown: GFM
 highlighter: rough
-  input: GFM
+
 commonmark:
   options: ["SMART", "FOOTNOTES", "UNSAFE"]
   extensions: ["strikethrough", "autolink", "table"]
