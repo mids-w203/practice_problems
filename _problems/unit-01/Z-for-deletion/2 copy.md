@@ -1,5 +1,5 @@
 ---
-index: 5
+index: 2
 statement: |
     How many times should a coin be tossed so that the probability of at least
     one head is $\geq99\%$?
