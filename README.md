@@ -1,6 +1,6 @@
 https://mids-w203.github.io/practice_problems/
 
-
+Several of these problems are adapted from Durrett's _Elementary Probability for Appliations_
 
 # practice_problems
 
